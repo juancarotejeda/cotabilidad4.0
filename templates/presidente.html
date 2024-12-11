@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head>
+    <script src="/static/js/color-modes.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.122.0">
+    <title>Presidentes</title>
+    <link rel="webside icon" type="png" href="/static/favicon/favicon-32x32.png">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/grid/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link href="/static/css/min.css" rel="stylesheet">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+
+      .bd-mode-toggle .dropdown-menu .active .bi {
+        display: block !important;
+      }
+    </style>
+   
+    <!-- Custom styles for this template -->
+    <link href="/static/css/grid.css" rel="stylesheet">
+  </head>
+  <body class="py-4">
+    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+      <symbol id="check2" viewBox="0 0 16 16">
+        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+      </symbol>
+      <symbol id="circle-half" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+      </symbol>
+      <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+      </symbol>
+      <symbol id="sun-fill" viewBox="0 0 16 16">
+        <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+      </symbol>
+    </svg>
+
+    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+      <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+              id="bd-theme"
+              type="button"
+              aria-expanded="false"
+              data-bs-toggle="dropdown"
+              aria-label="Toggle theme (auto)">
+        <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#circle-half"></use></svg>
+        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#sun-fill"></use></svg>
+            Oscuro
+            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
+            Claro
+            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#circle-half"></use></svg>
+            Auto
+            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+          </button>
+        </li>
+      </ul>
+    </div>
+   
+<main>
+  <div class="container">
+    <h1>Gracias por aceptar esta aplicacion!!</h1>
+    <p class="lead">Este es un enorme esfuerzo realizado por El presidente de tu parada,la Federaciones de mototaxis.Con el apollo de la <code> SUBDIRECCION DEL INTRAN</code><br>
+     y<code>GRUPO ACTEC</code>Para darle Formalidad la labor que ustedes realizan</p>
+
+     <div class="row mb-3 text-center text-white  publicidad">    
+        <img  src="/static/imagenes/barrio_seguro-intran.gif" alt="publicidad">
+    </div>   
+    <div class="row mb-3 text-center">
+        <div class="col-lg-4 themed-grid-col list_pago">
+            <form action="/data_cuotas" method="POST">   
+                <h1>LISTA DE PAGOS</h1> 
+                <ol>
+                <li>
+                <label for="paradas">PARADA:</label>             
+                <input type="text" name="parada" value="{{parada}}" id="paradas">
+                </li>
+                <li>                     
+                <label for="fecha">FECHA:</label>
+                <input type="text" name="time" value="{{fecha}}" id="fecha">
+                </li>
+                <li>
+                <label for="miembro">MIEMBROS:</label>
+                <input type="text" name="numero" value="{{ cabecera[0]}}" id="miembro">         
+                </li>
+                <li>
+                <label for="valor">CUOTA:</label>
+                {%for dat in informacion %} 
+                <input type="text" name="valor" value="{{dat[6]}}" id="valor">
+                {%endfor%}
+                </li>
+                </ol>        
+                <table >
+                 <thead>
+                <tr>
+                   <th>ITEM</th>
+                   <th> ASOCIADOS</th>
+                   <th>CEDULA</th>
+                   <th>PAGO</th>            
+                </tr>
+                </thead>
+                 {% for user in datos %}
+                 <tbody>
+                <tr> 
+                   <td>         
+                    <input type="hidden" value="{{ user[0]}}" name="item">{{ user[0]}}
+                   </td>
+                    <td>          
+                   <input type="hidden" value="{{ user[1]}}" name="nombre">{{ user[1]}}
+                   </td>
+                   <td>
+                   <input type="hidden" value="{{ user[2]}}" name="cedula">{{ user[2]}}
+                   </td>
+                   <td>  
+                   <select name="select"> 
+                         <option value="no-pago" >cuota no pagada</option>
+                         <option value="pago">cuota pagada</option>
+                   </select>
+                   <input type="hidden" value="select" name="estado">
+                   </td>
+             </tr>
+               {%endfor%} 
+             <tr>
+             <td colspan="4">
+                <div class="d-flex gap-2 justify-content-center py-5">
+                <label for="cedula_p">Cedula presidente</label>
+                <input type="password" name="cedula_p" id="cedula_p" placeholder="Ingresar cedula" required>
+            </div>
+             </td>
+             </tr>
+             </tbody>
+             </table> 
+             <div class="d-flex gap-2 justify-content-center py-5">
+                <button class="btn btn-primary rounded-pill px-3" type="reset">Reset</button>
+                <button class="btn btn-secondary rounded-pill px-3" type="submit">Enviar</button>
+             </div>
+            </form>        
+        </div>
+        <div class="col-lg-4 themed-grid-col pagos">
+            <form action="data_ingresos" method="POST">
+                <legend><h1>REPORTE DE INGRESOS</h1></legend>       
+                <ol> 
+                <li>   
+                {%for datos in informacion %}
+                   <h1>PARADA:{{datos[1]}}</h1>
+                   <input type="hidden" name="parada" value="{{datos[1]}}" id="parada"> 
+                {%endfor%} 
+                </li> 
+                <li>
+                  <label for="fecha">FECHA:</label>
+                  <input type="text" name="time" value="{{fecha}}" id="fecha">
+                  </li>         
+                <li>      
+                <label for="descripcion_i">DESCRIPCION:</label>
+                <select name="descripcion_i" id="descripcion_i">
+                   <option >No ingresos</option>
+                   <option >Ingresos por publicidad</option>
+                   <option >Aporte a la parada</option>
+                   <option >Ayuda del estado</option>
+                   <option >Recaudacion de Fondo</option>
+                   <option >Ingreso segun recibo anexo</option>
+                </select>
+                </li>
+                <li>
+                <label for="cantidad">CANTIDA:</label>
+                <input type="text" name="cantidad_i" id="cantidad" placeholder="Ingresar la cantidad" required>
+               </li>
+               </ol>
+               <div class="d-flex gap-2 justify-content-center py-5">
+                    <label for="cedula_p">Cedula presidente</label>
+                    <input type="password" name="cedula_p" id="cedula_p" placeholder="Ingresar cedula" required>
+               </div>              
+                <div class="d-flex gap-2 justify-content-center py-5">
+                    <button class="btn btn-primary rounded-pill px-3" type="reset">Reset</button>
+                    <button class="btn btn-secondary rounded-pill px-3" type="submit">Enviar</button>
+                 </div>
+                </form>     
+        </div>
+      <div class="col-lg-4 themed-grid-col pagos">
+        <form action="data_ingresos" method="POST">
+            <legend><h1>REPORTE DE INGRESOS</h1></legend>       
+            <ol> 
+            <li>   
+            {%for datos in informacion %}
+               <h1>PARADA:{{datos[1]}}</h1>
+               <input type="hidden" name="parada" value="{{datos[1]}}" id="parada"> 
+            {%endfor%} 
+            </li> 
+            <li>
+              <label for="fecha">FECHA:</label>
+              <input type="text" name="time" value="{{fecha}}" id="fecha">
+              </li>         
+            <li>      
+            <label for="descripcion_i">DESCRIPCION:</label>
+            <select name="descripcion_i" id="descripcion_i">
+               <option >No ingresos</option>
+               <option >Ingresos por publicidad</option>
+               <option >Aporte a la parada</option>
+               <option >Ayuda del estado</option>
+               <option >Recaudacion de Fondo</option>
+               <option >Ingreso segun recibo anexo</option>
+            </select>
+            </li>
+            <li>
+            <label for="cantidad">CANTIDA:</label>
+            <input type="text" name="cantidad_i" id="cantidad" placeholder="Ingresar la cantidad" required>
+            </li>
+            </ol>
+            <div class="d-flex gap-2 justify-content-center py-5">
+                <label for="cedula_p">Cedula presidente</label>
+                <input type="password" name="cedula_p" id="cedula_p" placeholder="Ingresar cedula" required>
+           </div>              
+            <div class="d-flex gap-2 justify-content-center py-5">
+                <button class="btn btn-primary rounded-pill px-3" type="reset">Reset</button>
+                <button class="btn btn-secondary rounded-pill px-3" type="submit">Enviar</button>
+             </div>
+            </form>   
+      </div>
+      <div class="col-lg-4 themed-grid-col pagos">
+        <form action="/data_gastos" method="POST">
+            <legend><h1>REPORTE GASTOS </h1></legend>   
+            <ol> 
+            <li> 
+            {%for datos in informacion %}
+            <h4>PARADA:{{datos[1]}}</h4>
+            <input type="hidden" name="parada" value="{{datos[1]}}" id="parada">
+            {%endfor%}
+            </li>
+            <li>
+            <label for="fecha">FECHA:</label>
+            <input type="text" name="time" value="{{fecha}}" id="fecha"> 
+            </li>
+            <li>              
+               <label for="descripcion">DESCRIPCION:</label>
+               <select name="descripcion_g" id="descripcion">
+                  <option > </option>
+                  <option >Pago a la Administradora</option>
+                  <option >Ayuda para la Federacion</option>
+                  <option >Compra de casco protector</option>
+                  <option >Ayuada a Miembro</option>
+                  <option >Compra de respuestos</option>
+                  <option >Gastos segun Factura anexa</option>
+               </select>
+            </li>  
+            <li>      
+            <label for="cantidad" >CANTIDA:</label>
+            <input type="text" name="cantidad_g"id="cantidad" placeholder="Ingresar la cantidad" required >
+            </li>
+            </ol>
+            <div class="d-flex gap-2 justify-content-center py-5">
+                <label for="cedula_p">Cedula presidente</label>
+                <input type="password" name="cedula_p" id="cedula_p" placeholder="Ingresar cedula" required>
+           </div>              
+            <div class="d-flex gap-2 justify-content-center py-5">
+                <button class="btn btn-primary rounded-pill px-3" type="reset">Reset</button>
+                <button class="btn btn-secondary rounded-pill px-3" type="submit">Enviar</button>
+             </div>
+            </form> 
+      </div>
+   
+    <div class="col-lg-4 themed-grid-col pagos">
+        <form action="/data_prestamos" method="POST">  
+            <legend><h1>REPORTE PRESTAMOS</h1></legend>    
+            {%for datos in informacion %}   
+            <input type="hidden" name="parada" value="{{datos[1]}}" id="parada">  
+            {%endfor%}      
+            <ol>  
+            <li>
+            {%for datos in informacion %}
+               <h1>PARADA: {{datos[1]}}</h1>
+            {%endfor%}
+            </li> 
+            <li>   
+            <input type="text" name="time" value="{{fecha}}" id="fecha" readonly><br>  
+            </li> 
+            <li> 
+            <label for="beneficiado">BENEFICIADO:</label>  
+            <select name="descripcion_p" id="beneficiado" required>         
+               <option ></option>
+               {% for usuario in miembros %}
+               <option>{{usuario[1]}}</option>
+               {%endfor%}
+            </select>
+            </li>
+            <li>
+            <label for="monto">MONTO:</label>
+            <input type="text" name="cantidad_p" id="monto" placeholder="Ingresar la cantidad" required>
+            </li>
+            </ol>
+            <div class="d-flex gap-2 justify-content-center py-5">
+                <label for="cedula_p">Cedula presidente</label>
+                <input type="password" name="cedula_p" id="cedula_p" placeholder="Ingresar cedula" required>
+           </div>              
+            <div class="d-flex gap-2 justify-content-center py-5">
+                <button class="btn btn-primary rounded-pill px-3" type="reset">Reset</button>
+                <button class="btn btn-secondary rounded-pill px-3" type="submit">Enviar</button>
+             </div>
+            </form>
+    </div>
+
+<div class="col-lg-4 themed-grid-col pagos">
+    <form action="data_abonos" method="POST">
+        <legend><h1>REPORTE DE ABONO A PRESTAMOS</h1></legend>    
+        {%for datos in informacion %}   
+            <input type="hidden" name="parada" value="{{datos[1]}}" id="parada">  
+        {%endfor%}  
+        <ol>   
+        <li>
+        {%for datos in informacion %}
+        <h1>PARADA: {{datos[1]}}</h1>
+        {%endfor%} 
+        </li>                   
+        <li>
+        <label for="fecha">FECHA:</label>
+        <input type="text" name="time" value="{{fecha}}" id="fecha">
+        </li>
+        <li>
+        <label for="abonar">ABONAR A:</label>
+        <select name="descripcion_a" id="abonar">                 
+           <option ></option>
+           {% for usuario in prestamos %}
+           <option >{{usuario[0]}}</option>
+           {%endfor%}
+        </select>
+        </li>
+     
+        <li>
+        <label for="cantidad">CANTIDA:</label>
+        <input type="text" name="cantidad_a" id="cantidad" placeholder="Ingresar la cantidad" required>
+        </li>
+        </ol> 
+        <div class="d-flex gap-2 justify-content-center py-5">
+            <label for="cedula_p">Cedula presidente</label>
+            <input type="password" name="cedula_p" id="cedula_p" placeholder="Ingresar cedula" required>
+       </div>              
+        <div class="d-flex gap-2 justify-content-center py-5">
+            <button class="btn btn-primary rounded-pill px-3" type="reset">Reset</button>
+            <button class="btn btn-secondary rounded-pill px-3" type="submit">Enviar</button>
+         </div>
+        </form>
+</div>
+
+<div class="col-lg-4 themed-grid-col pagos">
+    <form action="/data_bancos" method="POST"> 
+        {%for datos in informacion %}   
+        <input type="hidden" name="parada" value="{{datos[1]}}" id="parada">      
+         <h1>REPORTE BANCARIO</h1>     
+        <ol>    
+        <li>   
+        <h1>PARADA:{{datos[1]}}</h1>
+        </li>   
+        <li>    
+           <label for="fecha">FECHA:</label>
+           <input type="text" name="time" value="{{fecha}}" id="fecha">
+        </li>
+        <li>                   
+           <label for="banco">BANCO:</label>
+           <input type="text" name="banco" value="{{datos[8]}}" id="banco">
+        </li>
+        <li>     
+           <label for="numero">CUENTA #:</label>
+           <input type="text" name="cuenta" value="{{datos[9]}}" id="numero">
+        </li> 
+        <li>     
+           <label for="operacion">Tipo de Operacion:</label>
+           <select name="operacion" id="operacion">
+              <optgroup label="Tipo de operacion">  
+              <option selected ></option>
+              <option >Deposito</option>
+              <option >Retiro</option>         
+              </optgroup>
+        </select> 
+        <input type="hidden" value="operacion" name="operacion">
+      </li> 
+      <li>    
+         <label for="balance">Monto de operacion:</label>
+         <input type="text" name="balance" value="0.0000" id="balance">
+      </li>
+      </ol>           
+      <div class="d-flex gap-2 justify-content-center py-5">
+        <label for="cedula_p">Cedula presidente</label>
+        <input type="password" name="cedula_p" id="cedula_p" placeholder="Ingresar cedula" required>
+   </div>              
+    <div class="d-flex gap-2 justify-content-center py-5">
+        <button class="btn btn-primary rounded-pill px-3" type="reset">Reset</button>
+        <button class="btn btn-secondary rounded-pill px-3" type="submit">Enviar</button>
+     </div>
+      {%endfor%}
+      </form>    
+</div>
+
+<div class="col-lg-4 themed-grid-col pagos">
+    <a class = "btn btn-lg btn-primary"  href="{{url_for('canal')}}" type="html" role="button">Canal MotoBen &raquo;</a>   
+</div>
+
+     
+</main>
+<script src="/static/js/min.js"></script>
+
+    </body>
+</html>

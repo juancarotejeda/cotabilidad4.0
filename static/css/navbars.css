@@ -1,0 +1,556 @@
+body {
+padding-top: 20px;
+
+}
+
+
+.logo{
+  width: 30px;
+  height: 30px; 
+  
+}
+
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.publicidad{
+  border:solid 5px rgb(242, 54, 12);
+  border-radius: 10px;
+  
+ 
+}
+
+.publicidad img{
+  width: 100%;
+  height:100%;
+}
+
+
+  
+/*=============================info-personal========================*/
+.info-personal{
+  border-radius: 10px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.info-personal h1{
+text-align: center;
+font-size: medium;
+}
+
+.info-personal h3{
+  font-size: medium;
+  font-weight: 700;
+  color: blue;
+  }
+
+/*===============================info-parada======================*/
+
+.info-parada{
+    color: #000000;
+    font-size: 12px;
+    border:solid 10px LightSteelBlue inset;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.info-parada h1{
+  text-align: center;
+  font-size: medium;
+  color:#000000;
+  }
+
+  .info-parada ol li{
+    line-height: 25px;
+    list-style-type: none;
+    padding: 4px;
+    }
+
+  .info-parada input{
+    font-size:14px;
+    color:#ff0202; 
+    background: none;
+    border: none;
+
+    }
+
+  .info-parada label{
+    font-size: medium;
+    font-weight: 700;
+    text-align: right;
+    color:#000000;
+  } 
+
+
+  .encabezado{
+    margin:auto; 
+    background-color: #000000;
+    color: white;
+    font-size: 14px;
+    padding: 30px;
+    width: auto;
+    border:solid 5px  LightSteelBlue;
+    overflow: hidden;
+  }        
+  .encabezado input{
+    font-size:14px;
+    color: rgb(255, 255, 255);
+    width:200px;
+    background-color: rgb(0, 0, 0);
+    border: none;
+    margin-left: 100px;
+    }
+    
+  
+  
+  .encabezado ol li{
+          line-height: 25px;
+          list-style-type: none;
+          padding: 4px;
+          }
+  
+  .encabezado h1{
+    text-align: center;
+    margin-bottom: 10px;            
+    } 
+  
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+
+}
+
+
+@media (max-width: 768px) {
+.container-flud{
+  width: 500px;
+}
+  }
+
+
+
+
+
+
+
+
+.b-example-divider {
+  width: 100%;
+  height: 3rem;
+  background-color: rgba(0, 0, 0, .1);
+  border: solid rgba(0, 0, 0, .15);
+  border-width: 1px 0;
+  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+
+.b-example-vr {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 100vh;
+}
+
+.bi {
+  vertical-align: -.125em;
+  fill: currentColor;
+}
+
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+  display: flex;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  text-align: center;
+  white-space: nowrap;
+ /*-webkit-overflow-scrolling: touch;*/
+}
+
+.btn-bd-primary {
+  --bd-violet-bg: #712cf9;
+  --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: var(--bd-violet-bg);
+  --bs-btn-border-color: var(--bd-violet-bg);
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: #6528e0;
+  --bs-btn-hover-border-color: #6528e0;
+  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: #5a23c8;
+  --bs-btn-active-border-color: #5a23c8;
+}
+
+.bd-mode-toggle {
+  z-index: 1500;
+}
+
+.bd-mode-toggle .dropdown-menu .active .bi {
+  display: block !important;
+}
+
+    
+
+  .login{
+    background: rgb(86, 137, 154);
+    color: #000000;
+    font-size: 12px;
+    width: 100%;
+    border:solid 10px LightSteelBlue;
+    border-radius: 10px;
+    margin: 10px auto;
+      }
+          
+
+          
+      .login h1{
+          text-align: center;
+          margin-bottom: 10px; 
+          font-size: medium;  
+          font-weight: 700;
+          color: orangered;         
+          }  
+          
+      .login h2{
+        text-align: center;
+        font-size: medium;  
+        font-weight: 700;
+        color: blue;         
+        }            
+
+
+          
+      .login  ol li{
+          line-height: 25px;
+          list-style: none;
+        margin-bottom:  15px;
+          }
+          
+
+      .login label{
+        font-size: medium;
+        font-weight: 700;
+        text-align: left;
+      }         
+
+
+
+
+      
+      .login input{
+        font-size:12px;
+        background: rgb(255, 255, 255);
+        color: #000000;
+        font-weight: 700;
+
+              }
+      
+.login button{
+    font-size:12px;
+    background: rgb(255, 255, 255);
+    color: #000000;
+    font-weight: 700;
+ width: 92%;
+  }        
+
+
+  
+  
+      .video{
+        height: 100px;
+        width: auto;
+        border-radius: 10px;
+      }    
+      
+
+        
+.list_pago{
+  background-color: #e6dbdb;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 700;
+  border:solid 5px LightSteelBlue;
+  border-radius: 10px;
+  margin-bottom: 10px;  
+}
+
+.list_pago h1{
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 10px;            
+} 
+
+.list_pago  ol li{
+  line-height: 25px;
+  list-style: none;
+  margin-top: 15px;
+}
+
+.list_pago input{
+  font-size:14px;
+  border: none;
+  color: #f91818;
+background: none;
+font-weight: 600;
+  }
+
+.list_pago table{
+  width: min-content;
+  line-height: 20px;
+  color: #000000;
+}
+
+.list_pago select{
+  border: none;
+  background: none;
+  color: #000000;
+  font-weight: 600;
+}
+
+.list_pago button[type="submit"] {
+  font-size:12px;
+  background: rgb(38, 255, 0);
+  color: #000000;
+  border-radius: 5px;
+  float: right;
+  width: 150px;
+  height: 30px;
+  margin-right: 30px;
+ 
+  } 
+
+  .list_pago button[type="reset"] {
+    font-size:12px;
+    background: yellow;
+    color: #000000;
+    border-radius: 5px;
+    float: left;
+    width: 150px;
+    height: 30px;
+    margin-left: 30px;
+   
+    }
+
+    .pagos{
+      color: #000000;
+      font-size: 12px;
+      border:solid 5px LightSteelBlue;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .pagos h1{
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 10px;            
+    } 
+    
+    .pagos  ol li{
+      line-height: 25px;
+      list-style: none;
+      margin-top: 15px;
+    }
+    .pagos input{
+      font-size:14px;
+      border: none;
+      color: #181ff9;
+    background: none;
+    font-weight: 700;
+      }
+    
+    
+    .pagos select{
+      background: none;
+      font-size:20px;
+      font-weight: 700;
+      color: #000000;
+      font-weight: 600;
+    }
+
+    .pagos button {
+      font-size:12px;
+      background: yellow;
+      color: #000000;
+      border-radius: 5px;
+      float: left;
+      width: 150px;
+      height: 30px;
+      margin-left: 30px;
+     
+      }  
+
+      .bt-modal {
+        width: 100%;
+        height: 10%;
+        background: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 10px;
+        padding-bottom: 5px;
+      }      
+
+
+
+
+
+
+      .boton-modal label{
+        padding: 10px 15px;
+        background-color: #5488a3;
+        color: #fff;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 300ms ease;
+      }
+      .boton-modal label:hover{
+        background-color: #185E83;
+      }
+      /*:::Fin Boton-Modal:::*/
+      
+      /*:::Ventana Modal:::*/
+      
+      
+      
+      
+      
+      .container-listado{
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0; left: 0;
+        background-color: rgb(0, 0, 0);
+        display: none;
+      
+      }
+      
+      #btn-listado{
+        display: none;
+      }
+      
+      #btn-listado:checked ~ .container-listado{
+        display: block;
+      }
+      
+      .content-vu{
+        width: 100%;
+        height: 90%;
+        position: relative;
+        top: 20; left: 20;
+        padding: 20px;
+        background: #d3e1f9;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        overflow: scroll;
+      }
+      
+      .content-botton {
+        width: 100%;
+        height: 10%;
+        background: #000000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      
+      .btn-cerrar label{
+        padding: 7px 10px;
+        background-color: #5488a3;
+        color: #fff;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 300ms ease;
+      }
+      .content-botton label:hover{
+        background-color:#185E83;
+      }
+      
+      /*
+      .cerrar-modal{
+        width:100%;
+        height: 100vh;
+        position: absolute;
+        top:0; left: 0;
+        z-index: -1;
+      }*/
+      
+      
+      #btn-ingreso{
+        display: none;
+      }
+      
+      #btn-ingreso:checked ~ .container-ingreso{
+        display: block;
+      }
+      
+
+      
+      #btn-gastos{
+        display: none;
+      }
+      
+      #btn-gastos:checked ~ .container-gastos{
+        display: block;
+      }
+      
+      .container-gastos{
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0; left: 0;
+        background-color: rgb(0, 0, 0);
+        display: none;
+      }
+      
+      #btn-prestamos{
+        display: none;
+      }
+      
+      #btn-prestamos:checked ~ .container-prestamos{
+        display: block;
+      }
+      
+      .container-prestamos{
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0; left: 0;
+        background-color: rgb(0, 0, 0);
+        display: none;
+      }
+      
+      #btn-abonos{
+        display: none;
+      }
+      
+      #btn-abonos:checked ~ .container-abonos{
+        display: block;
+      }
+      
+      .container-abonos{
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0; left: 0;
+        background-color: rgb(0, 0, 0);
+        display: none;      
+      }
