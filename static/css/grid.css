@@ -69,9 +69,8 @@ font-size: medium;
 
 
     .publicidad{
-      border:solid 5px LightSteelBlue;
       border-radius: 10px;     
-     
+     background: none;
     }
     
     .publicidad img{
@@ -82,9 +81,9 @@ font-size: medium;
     .list_pago{
       background-color: #e6dbdb;
       color: #000000;
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 700;
-      border:solid 5px LightSteelBlue;
+
       border-radius: 10px;
       margin-bottom: 10px;  
     }
@@ -112,8 +111,10 @@ font-size: medium;
     
     .list_pago table{
       width: max-content;
+      font-size: 10px;
       line-height: 20px;
       color: #000000;
+      border: 2px solid black;
       margin: 0px auto;
     }
     
