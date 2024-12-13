@@ -125,14 +125,14 @@
         <li>
           <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
             <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#sun-fill"></use></svg>
-            Oscuro
+            Claro
             <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
           </button>
         </li>
         <li>
           <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
             <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
-            Claro
+            Oscuro
             <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
           </button>
         </li>
@@ -148,14 +148,15 @@
    
 <main>
   <div class="container">
-    <h1>Gracias por aceptar esta aplicacion!!</h1>
-    <p class="lead">Este es un enorme esfuerzo realizado por El presidente de tu parada,la Federaciones de mototaxis.Con el apollo de la <code> SUBDIRECCION DEL INTRAN</code><br>
-     y<code>GRUPO ACTEC</code>Para darle Formalidad la labor que ustedes realizan</p>
-
-     <div class="row mb-3 text-center text-white  publicidad">    
-        <img  src="/static/imagenes/barrio_seguro-intran.gif" alt="publicidad">
-    </div>   
     <div class="row mb-3 text-center">
+      <div class="col-lg-4  list_pago "> 
+      <h1>Gracias por aceptar esta aplicacion!!</h1>
+      <p class="lead">Este es un enorme esfuerzo realizado por El presidente de tu parada,la Federaciones de mototaxis.Con el apollo de la <code> SUBDIRECCION DEL INTRAN</code><br>
+       y <code>GRUPO ACTEC</code> Para darle Formalidad la labor que ustedes realizan</p>
+      </div>
+      <div class="col-lg-4  list_pago publicidad">     
+          <img  src="/static/imagenes/barrio_seguro-intran.gif" alt="publicidad">
+      </div>   
         <div class="col-lg-4 themed-grid-col list_pago">
             <form action="/data_cuotas" method="POST">   
                 <h1>LISTA DE PAGOS</h1> 
@@ -225,7 +226,7 @@
              </div>
             </form>        
         </div>
-        <div class="col-lg-4 themed-grid-col pagos">
+        <div class="col-lg-4 themed-grid-col list_pago">
             <form action="data_ingresos" method="POST">
                 <legend><h1>REPORTE DE INGRESOS</h1></legend>       
                 <ol> 
@@ -265,53 +266,13 @@
                  </div>
                 </form>     
         </div>
-      <div class="col-lg-4 themed-grid-col pagos">
-        <form action="data_ingresos" method="POST">
-            <legend><h1>REPORTE DE INGRESOS</h1></legend>       
-            <ol> 
-            <li>   
-            {%for datos in informacion %}
-               <h1>PARADA:{{datos[1]}}</h1>
-               <input type="hidden" name="parada" value="{{datos[1]}}" id="parada"> 
-            {%endfor%} 
-            </li> 
-            <li>
-              <label for="fecha">FECHA:</label>
-              <input type="text" name="time" value="{{fecha}}" id="fecha">
-              </li>         
-            <li>      
-            <label for="descripcion_i">DESCRIPCION:</label>
-            <select name="descripcion_i" id="descripcion_i">
-               <option >No ingresos</option>
-               <option >Ingresos por publicidad</option>
-               <option >Aporte a la parada</option>
-               <option >Ayuda del estado</option>
-               <option >Recaudacion de Fondo</option>
-               <option >Ingreso segun recibo anexo</option>
-            </select>
-            </li>
-            <li>
-            <label for="cantidad">CANTIDA:</label>
-            <input type="text" name="cantidad_i" id="cantidad" placeholder="Ingresar la cantidad" required>
-            </li>
-            </ol>
-            <div class="d-flex gap-2 justify-content-center py-5">
-                <label for="cedula_p">Cedula presidente</label>
-                <input type="password" name="cedula_p" id="cedula_p" placeholder="Ingresar cedula" required>
-           </div>              
-            <div class="d-flex gap-2 justify-content-center py-5">
-                <button class="btn btn-primary rounded-pill px-3" type="reset">Reset</button>
-                <button class="btn btn-secondary rounded-pill px-3" type="submit">Enviar</button>
-             </div>
-            </form>   
-      </div>
-      <div class="col-lg-4 themed-grid-col pagos">
+      <div class="col-lg-4 themed-grid-col list_pago">
         <form action="/data_gastos" method="POST">
             <legend><h1>REPORTE GASTOS </h1></legend>   
             <ol> 
             <li> 
             {%for datos in informacion %}
-            <h4>PARADA:{{datos[1]}}</h4>
+            <h1>PARADA:{{datos[1]}}</h1>
             <input type="hidden" name="parada" value="{{datos[1]}}" id="parada">
             {%endfor%}
             </li>
@@ -345,9 +306,8 @@
                 <button class="btn btn-secondary rounded-pill px-3" type="submit">Enviar</button>
              </div>
             </form> 
-      </div>
-   
-    <div class="col-lg-4 themed-grid-col pagos">
+    </div>  
+    <div class="col-lg-4 themed-grid-col list_pago">
         <form action="/data_prestamos" method="POST">  
             <legend><h1>REPORTE PRESTAMOS</h1></legend>    
             {%for datos in informacion %}   
@@ -387,7 +347,7 @@
             </form>
     </div>
 
-<div class="col-lg-4 themed-grid-col pagos">
+<div class="col-lg-4 themed-grid-col list_pago">
     <form action="data_abonos" method="POST">
         <legend><h1>REPORTE DE ABONO A PRESTAMOS</h1></legend>    
         {%for datos in informacion %}   
@@ -429,7 +389,7 @@
         </form>
 </div>
 
-<div class="col-lg-4 themed-grid-col pagos">
+<div class="col-lg-4 themed-grid-col list_pago">
     <form action="/data_bancos" method="POST"> 
         {%for datos in informacion %}   
         <input type="hidden" name="parada" value="{{datos[1]}}" id="parada">      
@@ -463,7 +423,7 @@
       </li> 
       <li>    
          <label for="balance">Monto de operacion:</label>
-         <input type="text" name="balance" value="0.0000" id="balance">
+         <input type="text" name="balance" placeholder="Ingresar monto" id="balance" required >
       </li>
       </ol>           
       <div class="d-flex gap-2 justify-content-center py-5">
@@ -478,7 +438,7 @@
       </form>    
 </div>
 
-<div class="col-lg-4 themed-grid-col pagos">
+<div class="col-lg-4 themed-grid-col list_pago">
     <a class = "btn btn-lg btn-primary"  href="{{url_for('canal')}}" type="html" role="button">Canal MotoBen &raquo;</a>   
 </div>
 

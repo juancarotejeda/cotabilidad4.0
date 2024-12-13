@@ -155,17 +155,18 @@
     
 <main>
   <div class="container">
-
+    <div class="row mb-3 text-center">
+    <div class="col-lg-4  list_pago "> 
     <h1>Gracias por aceptar esta aplicacion!!</h1>
     <p class="lead">Este es un enorme esfuerzo realizado por El presidente de tu parada,la Federaciones de mototaxis.Con el apollo de la <code> SUBDIRECCION DEL INTRAN</code><br>
-     y<code>GRUPO ACTEC</code>Para darle Formalidad la labor que ustedes realizan</p>
-
-     <div class="row mb-3 text-center text-white  publicidad">    
+     y <code>GRUPO ACTEC</code> Para darle Formalidad la labor que ustedes realizan</p>
+    </div>
+    <div class="col-lg-4  list_pago publicidad">     
         <img  src="/static/imagenes/barrio_seguro-intran.gif" alt="publicidad">
     </div>   
 
-    <div class="row mb-3 text-center">
-        <div class="col-lg-4  pagos bg-warning">  
+    
+        <div class="col-lg-4  list_pago bg-warning">  
         {%for datos in informacion %}   
         <h1>INFORMACION DE LA PARADA</h1>  
         <ol>    
@@ -213,7 +214,7 @@
         </ol>
         {%endfor%}
       </div>
-      <div class="col-lg-4  info-personal text-bg-danger">
+      <div class="col-lg-4 info-personal text-bg-danger  ">
         <h1>INFORMACION PERSONAL</h1>
         <p>Saludos Señor(a) {{nombre}} {{prestamo}}. 
         Por otro lado {{abonos}}.<br> de un total de{{pagos[0]}}.<br> 
@@ -221,12 +222,12 @@
         <h3>Mensaje de la FEDERACION Y ACTEC</h3>
         </p>
       </div>
-      <div class="col-lg-4 themed-grid-col pagos">
+      <div class="col-lg-4  list_pago ">
         <h1>Miembros Registrado</h1>
         <table>
                <tr>
                   <th>Item</th>
-                  <th>Nombre del asociado</th>
+                  <th> asociados</th>
                   <th>Cedula</th>
                   <th>Telefono</th>
                   <th>Funcion</th>
@@ -243,7 +244,7 @@
                </table>
           </div> 
     
-          <div class="col-lg-4 themed-grid-col pagos">   
+          <div class="col-lg-4 themed-grid-col list_pago">   
                <h1>INFORMACION FINANCIERA</h1>
                <table>
                <tr>
@@ -294,7 +295,7 @@
              </tr>
                </table>
         </div>
-        <div class="col-lg-4 themed-grid-col pagos">   
+        <div class="col-lg-4 themed-grid-col list_pago">   
         <h1>Historial de Aportes y Pendientes</h1>
         <table>
           <tr>
@@ -316,7 +317,7 @@
           </table>
       </div>
 
-      <div class="col-lg-4 themed-grid-col pagos">
+      <div class="col-lg-4 themed-grid-col list_pago">
         <a class = "btn btn-lg btn-primary"  href="{{url_for('canal')}}" type="html" role="button">Canal MotoBen &raquo;</a>
     </div>
 </main>

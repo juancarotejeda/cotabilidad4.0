@@ -66,54 +66,7 @@ font-size: medium;
   color: blue;
   }
 
-  .pagos{
-    background: #f5f5d7;
-    color: #000000;
-    font-size: 12px;
-    border:solid 5px LightSteelBlue;
-    border-radius: 10px;
-    margin-bottom: 10px;
-  }
 
-  .pagos h1{
-    text-align: center;
-    font-size: 18px;
-    margin-bottom: 10px;            
-  } 
-  
-  .pagos  ol li{
-    line-height: 25px;
-    list-style: none;
-    margin-top: 15px;
-  }
-  .pagos input{
-    font-size:14px;
-    border: none;
-    color: #181ff9;
-  background: none;
-  font-weight: 700;
-    }
-  
-  
-  .pagos select{
-    background: none;
-    font-size:20px;
-    font-weight: 700;
-    color: #000000;
-    font-weight: 600;
-  }
-
-  .pagos button {
-    font-size:12px;
-    background: yellow;
-    color: #000000;
-    border-radius: 5px;
-    float: left;
-    width: 150px;
-    height: 30px;
-    margin-left: 30px;
-   
-    }  
 
     .publicidad{
       border:solid 5px LightSteelBlue;
@@ -151,15 +104,17 @@ font-size: medium;
     .list_pago input{
       font-size:14px;
       border: none;
-      color: #f91818;
+      color: #181ff9;
     background: none;
-    font-weight: 600;
+    font-weight: 700;
+    width: 100px;
       }
     
     .list_pago table{
-      width: min-content;
+      width: max-content;
       line-height: 20px;
       color: #000000;
+      margin: 0px auto;
     }
     
     .list_pago select{
@@ -167,6 +122,7 @@ font-size: medium;
       background: none;
       color: #000000;
       font-weight: 600;
+      width: 100px;
     }
     
     .list_pago button[type="submit"] {
@@ -183,7 +139,7 @@ font-size: medium;
     
       .list_pago button[type="reset"] {
         font-size:12px;
-        background: yellow;
+        background: rgb(255, 25, 0);
         color: #000000;
         border-radius: 5px;
         float: left;
