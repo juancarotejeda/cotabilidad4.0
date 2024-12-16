@@ -199,8 +199,6 @@
         </ol>
         {%endfor%}
       </div>
-
-
       <div class="col-lg-4 info-personal text-bg-danger  ">
         <h1>INFORMACION PERSONAL</h1>
         <p>Saludos Señor(a) {{nombre}} {{prestamo}}. 
@@ -210,78 +208,77 @@
         </p>
       </div>
       <div class="col-lg-4  list_pago ">
-        <h1>Miembros Registrado</h1>
-        <table>
-               <tr>
-                  <th>Item</th>
-                  <th> asociados</th>
-                  <th>Cedula</th>
-                  <th>Telefono</th>
-                  <th>Funcion</th>
-               </tr>
-               {% for usuario in miembros %}
-               <tr>
-                  <td>{{usuario[0]}}</td>
-                  <td>{{usuario[1]}}</td>
-                  <td> Oculta </td>
-                  <td>{{usuario[3]}}</td>
-                  <td>{{usuario[4]}}</td>
-               </tr>
-               {%endfor%}
-               </table>
-          </div> 
-    
-          <div class="col-lg-4 themed-grid-col list_pago">   
-               <h1>INFORMACION FINANCIERA</h1>
-               <table>
-               <tr>
-                  <th>Item</th>
-                  <th>Informacion financiera</th>
-                  <th>Total al momento</th>
-               
-               </tr>
-               <tr>
-                <tD>1</tD>
-                <td>aporta de los asociados :</td>
-                <td>{{diario[2]}}RD$</td>
-             </tr>
-             <tr>
-                <tD>2</tD>
-                <td>ingresos por otras actividades :</td>
-                <td> {{diario[4]}}RD$</td>
-             </tr>
-             <tr>
-              <tD>3</tD>
-              <td>Prestamos a los asociados :</td>
-              <td>{{diario[1]}}RD$</td>
+      <h1>Miembros Registrado</h1>
+      <table>
+        <tr>
+          <th>Item</th>
+          <th> asociados</th>
+          <th>Cedula</th>
+          <th>Telefono</th>
+          <th>Funcion</th>
+        </tr>
+        {% for usuario in miembros %}
+        <tr>
+          <td>{{usuario[0]}}</td>
+          <td>{{usuario[1]}}</td>
+          <td> Oculta </td>
+          <td>{{usuario[3]}}</td>
+          <td>{{usuario[4]}}</td>
+        </tr>
+        {%endfor%}
+      </table>
+      </div>     
+      <div class="col-lg-4 themed-grid-col list_pago">   
+            <h1>INFORMACION FINANCIERA</h1>
+            <table>
+            <tr>
+              <th>Item</th>
+              <th>Informacion financiera</th>
+              <th>Total al momento</th>
+            
             </tr>
-             <tr>
-                <tD>4</tD>
-                <td> abonos a prestamos :</td>
-                <td>{{diario[6]}}RD$</td>
-             </tr>
-             <tr>
-                <tD>5</tD>
-                <td>cuotas no pagadas :</td>
-                <td>{{diario[5]}}RD$</td>
-             </tr>
-             <tr>
-                <tD>6</tD>
-                <td> gastos incurridos de parada :</td>
-                <td>{{diario[3]}}RD$</td>
-             </tr>
-             <tr>
-             <tD>7</tD>
-              <td>Balance General:</td>
-             <td>{{diario[0]}}RD$</td>
-             </tr>
-             <tr>
-             <tD>8</tD>
-                <td>balance bancario :</td>
-             <td>{{diario[7]}}RD$</td>
-             </tr>
-               </table>
-        </div>
+            <tr>
+            <tD>1</tD>
+            <td>aporta de los asociados :</td>
+            <td>{{diario[2]}}RD$</td>
+          </tr>
+          <tr>
+            <tD>2</tD>
+            <td>ingresos por otras actividades :</td>
+            <td> {{diario[4]}}RD$</td>
+          </tr>
+          <tr>
+          <tD>3</tD>
+          <td>Prestamos a los asociados :</td>
+          <td>{{diario[1]}}RD$</td>
+        </tr>
+          <tr>
+            <tD>4</tD>
+            <td> abonos a prestamos :</td>
+            <td>{{diario[6]}}RD$</td>
+          </tr>
+          <tr>
+            <tD>5</tD>
+            <td>cuotas no pagadas :</td>
+            <td>{{diario[5]}}RD$</td>
+          </tr>
+          <tr>
+            <tD>6</tD>
+            <td> gastos incurridos de parada :</td>
+            <td>{{diario[3]}}RD$</td>
+          </tr>
+          <tr>
+          <tD>7</tD>
+          <td>Balance General:</td>
+          <td>{{diario[0]}}RD$</td>
+          </tr>
+          <tr>
+          <tD>8</tD>
+            <td>balance bancario :</td>
+          <td>{{diario[7]}}RD$</td>
+          </tr>
+            </table>
+    </div>
         <div class="col-lg-4 themed-grid-col list_pago">   
         <h1>Historial de Aportes y Pendientes</h1>
         <table>
@@ -303,7 +300,6 @@
           {%endfor%}             
           </table>
       </div>     
-
       <div class="col-lg-4 themed-grid-col  p-1">
         <a class = "btn btn-lg btn-primary p-1"  href="{{url_for('canal')}}" type="html" role="button">Canal MotoBen &raquo;</a> 
         <button type="button" class="btn btn-lg btn-primary p-1 " data-bs-toggle="modal" data-bs-target="#myModal7">
@@ -464,16 +460,14 @@
         </div>
       </div>
     </div>
-         
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-      </div>
-      </div>
-      </div>
-      </div> 
-      </div>    
+    <!-- Modal footer -->
+    <div class="modal-footer">
+    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+    </div>
+    </div>
+    </div>
+    </div> 
+    </div>    
 </main>
 <script src="/static/js/min.js"></script>
 
