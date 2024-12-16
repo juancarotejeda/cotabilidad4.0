@@ -17,27 +17,21 @@ def info_parada(cur,parada):
     infos=cur.fetchall()     
     return infos
 
-def info_cabecera(cur,parada,cedula):          
+def info_cabecera(cur,parada):          
     cur.execute(f'SELECT nombre FROM {parada}')
     seleccion=cur.fetchall()
     cant=len(seleccion)  
-    presidente = []       
-    cur.execute(f"SELECT nombre FROM {parada}  WHERE funcion = 'Presidente'")   
-    press=cur.fetchone()
-    if press != None:  
+    presidente = []
+    ced_presidente=[]       
+    cur.execute(f"SELECT nombre,cedula FROM {parada}  WHERE funcion = 'Presidente'")   
+    press=cur.fetchall()
+    if press != []:  
      for pres in press:   
-        presidente=pres
+        presidente=pres[0]
+        ced_presidente=pres[1]
     else:     
-       presidente='No disponible'   
-    veedor = []
-    cur.execute(f"SELECT funcion FROM {parada}  WHERE cedula = '{cedula}'")   
-    presd=cur.fetchone()
-    if presd != None:
-     for prex in presd:
-       veedor=prex 
-    else:
-        veedor='No disponible'           
-    return cant,presidente,veedor                
+       presidente='No disponible'            
+    return cant,presidente,ced_presidente                
      
 def lista_miembros(cur,parada):
     listas=[]
@@ -59,13 +53,13 @@ def diario_general(cur,parada):
     cur.execute(f"SELECT  prestamos, ingresos, gastos, aporte, pendiente, abonos, balance_banco FROM tabla_index WHERE nombre='{parada}' " )  
     consult=cur.fetchall()
     for valor in consult:
-      prestamos=valor[0]
-      ingresos=valor[1]
-      gastos=valor[2]
-      aporte=valor[3]
-      pendiente=valor[4]
-      abonos=valor[5]
-      balance_bancario=valor[6]
+        prestamos=valor[0]
+        ingresos=valor[1]
+        gastos=valor[2]
+        aporte=valor[3]
+        pendiente=valor[4]
+        abonos=valor[5]
+        balance_bancario=valor[6]
     balance=(aporte + ingresos + abonos )-(gastos+prestamos)
     data=(balance,prestamos,ingresos,gastos,aporte,pendiente,abonos,balance_bancario)   
     return data
@@ -224,7 +218,7 @@ def vef_cedula(cur,cedula):
         return parada             
   return []    
 
-def crear_p(cur,parada,string,valor_cuota,hoy):
+def crear_pago(cur,parada,string,valor_cuota,hoy):
        suma_no=[];suma_si=[]
        cur.execute(f'CREATE TABLE IF NOT EXISTS {parada}_cuota( item VARCHAR(50)  NULL, fecha VARCHAR(50)  NULL, estado VARCHAR(50)  NULL, nombre VARCHAR(50)  NULL, cedula VARCHAR(50)  NULL)')
        for data in string:

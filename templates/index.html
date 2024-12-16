@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
   <head><script src="/static/js/color-modes.js"></script>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -10,14 +9,9 @@
     <title>Choferes</title>
     <link rel="webside icon" type="png" href="/static/favicon/favicon-32x32.png">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/grid/">
-
-    
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-
-<link href="/static/css/min.css" rel="stylesheet">
-
-    <style>
+    <link href="/static/css/min.css" rel="stylesheet">
+  <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -94,11 +88,9 @@
       .bd-mode-toggle .dropdown-menu .active .bi {
         display: block !important;
       }
-    </style>
-
-    
+  </style>   
     <!-- Custom styles for this template -->
-    <link href="/static/css/grid.css" rel="stylesheet">
+  <link href="/static/css/grid.css" rel="stylesheet">
   </head>
   <body class="py-4">
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -116,7 +108,6 @@
         <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
       </symbol>
     </svg>
-
     <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
       <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
               id="bd-theme"
@@ -143,29 +134,23 @@
           </button>
         </li>
         <li>
-          <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+        <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
             <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#circle-half"></use></svg>
             Auto
             <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-          </button>
-        </li>
-      </ul>
-    </div>
-
-    
+        </button>
+    </li>
+    </ul>
+    </div>   
 <main>
-  <div class="container">
-    <div class="row mb-3 text-center">
+    <div class="container">
+    <div class="row mb-3 text-center">  
+      <img class="mb-4" src="/static/imagenes/barrio_seguro-intran.gif" alt="" width="300" height="120">
     <div class="col-lg-4  list_pago "> 
     <h1>Gracias por aceptar esta aplicacion!!</h1>
     <p class="lead">Este es un enorme esfuerzo realizado por El presidente de tu parada,la Federaciones de mototaxis.Con el apollo de la <code> SUBDIRECCION DEL INTRAN</code><br>
      y <code>GRUPO ACTEC</code> Para darle Formalidad la labor que ustedes realizan</p>
-    </div>
-    <div class="col-lg-4  list_pago publicidad">     
-        <img  src="/static/imagenes/barrio_seguro-intran.gif" alt="publicidad">
-    </div>   
-
-    
+    </div>    
         <div class="col-lg-4  list_pago bg-warning">  
         {%for datos in informacion %}   
         <h1>INFORMACION DE LA PARADA</h1>  
@@ -214,6 +199,8 @@
         </ol>
         {%endfor%}
       </div>
+
+
       <div class="col-lg-4 info-personal text-bg-danger  ">
         <h1>INFORMACION PERSONAL</h1>
         <p>Saludos Señor(a) {{nombre}} {{prestamo}}. 
@@ -315,11 +302,178 @@
           </tr>  
           {%endfor%}             
           </table>
-      </div>
+      </div>     
 
-      <div class="col-lg-4 themed-grid-col list_pago">
-        <a class = "btn btn-lg btn-primary"  href="{{url_for('canal')}}" type="html" role="button">Canal MotoBen &raquo;</a>
+      <div class="col-lg-4 themed-grid-col  p-1">
+        <a class = "btn btn-lg btn-primary p-1"  href="{{url_for('canal')}}" type="html" role="button">Canal MotoBen &raquo;</a> 
+        <button type="button" class="btn btn-lg btn-primary p-1 " data-bs-toggle="modal" data-bs-target="#myModal7">
+         Sociales MotoBen
+        </button>  
+      </div>
+    </div> 
+    
+    <div class="modal fade" id="myModal7">
+      <div class="modal-dialog  modal-lg">
+      <div class="modal-content">   
+      <!-- Modal Header -->
+      <div class="modal-header">
+      <h1 class="modal-title">Actividades de nuestra Gente</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>   
+      <!-- Modal body -->
+      <div class="modal-body list_pago">
+  
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          <div class="col">
+            <div class="card shadow-sm">
+              <img class="bd-placeholder-img card-img-top" width="100%" height="225"  src="/static/imagenes/p-sirena.png " alt="#">
+              <div class="card-body">
+                <p class="card-text"></p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  </div>
+                  <small class="text-body-secondary">#1</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card shadow-sm">
+              <video class="bd-placeholder-img card-img-top" width="100%" height="225" src="/static/imagenes/M.Rodriguez.mp4" controls ></video>
+              <div class="card-body">
+                <p class="card-text"></p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  </div>
+                  <small class="text-body-secondary">#2</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card shadow-sm">
+              <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="/static/imagenes/puente-blanco-dia.jpg" alt="#" >
+              <div class="card-body">
+                <p class="card-text"></p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  </div>
+                  <small class="text-body-secondary">#3</small>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="col">
+            <div class="card shadow-sm">
+              <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="/static/imagenes/san-carlos2.jpg" alt="#"  >
+              <div class="card-body">
+                <p class="card-text"></p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  </div>
+                  <small class="text-body-secondary">#4</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card shadow-sm">
+              <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="/static/imagenes/plaza-la-bandera.jpg" alt="#">
+              <div class="card-body">
+                <p class="card-text"></p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  </div>
+                  <small class="text-body-secondary">#5</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card shadow-sm">
+              <video class="bd-placeholder-img card-img-top" width="100%" height="225" src="/static/imagenes/lasterrenas6122024.mp4" controls ></video>
+              <div class="card-body">
+                <p class="card-text"></p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  </div>
+                  <small class="text-body-secondary">^#6</small>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="col">
+            <div class="card shadow-sm">
+              <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="/static/imagenes/plaza-bandera.jpg"alt="#" >
+              <div class="card-body">
+                <p class="card-text"></p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  </div>
+                  <small class="text-body-secondary">#7</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card shadow-sm">
+              <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="/static/imagenes/lasterrenas-61224-2.jpg"alt="#" >
+              <div class="card-body">
+                <p class="card-text"></p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  </div>
+                  <small class="text-body-secondary">#8</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card shadow-sm">
+              <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="/static/imagenes/paya4.jpg" alt="#" >
+              <div class="card-body">
+                <p class="card-text"></p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  </div>
+                  <small class="text-body-secondary">#9</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+         
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+      </div>
+      </div>
+      </div> 
+      </div>    
 </main>
 <script src="/static/js/min.js"></script>
 
