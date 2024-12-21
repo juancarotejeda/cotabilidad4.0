@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.122.0">
-    <title>Choferes</title>
+    <title>Presidente</title>
     <link rel="webside icon" type="png" href="/static/favicon/favicon-32x32.png">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/grid/">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
@@ -144,7 +144,9 @@
     </div>   
 <main>
     <div class="container">
-      <img class="mb-4" src="/static/imagenes/indotel.gif" alt="" width="330" height="120">  
+      <div class="row mb-3 text-center">  
+        <img class="mb-4" src="/static/imagenes/indotel.gif" alt="" width="300" height="120">
+      </div>  
     <div class="row mb-3 text-center">  
     <h1>Gracias por aceptar esta aplicacion!!</h1>
     <p class="lead">Este es un enorme esfuerzo realizado por El presidente de tu parada,la Federaciones de mototaxis.Con el apollo de la <code> SUBDIRECCION DEL INTRAN</code><br>
@@ -174,7 +176,13 @@
       <button type="button" class="btn btn-primary w-25 h-20" data-bs-toggle="modal" data-bs-target="#myModal6">
         <h6><small>Reporte de Bancos</small></h6>
       </button>
-      <button type="button" class="btn btn-primary w-25 h-20" data-bs-toggle="modal" data-bs-target="#myModal7">
+      <button type="button" class="btn btn-danger w-25 h-20" data-bs-toggle="modal" data-bs-target="#myModal8">
+        <h6><small>Estado de finanzas</small></h6>
+      </button>
+      <button type="button" class="btn btn-danger w-25 h-20" data-bs-toggle="modal" data-bs-target="#myModal9">
+        <h6><small>Estado de pagos</small></h6>
+      </button>
+      <button type="button" class="btn btn-warning w-25 h-20" data-bs-toggle="modal" data-bs-target="#myModal7">
         <h6><small>Sociales MotoBen</small></h6>
       </button>
     </div>    
@@ -214,7 +222,9 @@
     <li>
     <label for="miembro">
     <em>MIEMBROS:</em>  
-    <input type="text" name="numero" value="{{ cabecera[0]}}" id="miembro">         
+    <input type="text" name="numero" value="{{ cabecera[0]}}" id="miembro"> 
+    <input type="hidden" name="listado" value="LISTADO DE PAGO" id="listado">       
+    <input type="hidden" name="president" value="{{cabecera[1]}}" id="president">        
     </label>
     </li>
     <li>
@@ -283,7 +293,7 @@
     <!-- Modal body -->
     <div class="modal-body list_pago">
     <form action="/data_gastos" method="POST">
-    <h1>REPORTE GASTOS </h1>  
+    <h1>REPORTE DE GASTOS </h1>  
     <ol> 
     <li> 
     {%for datos in informacion %}
@@ -291,6 +301,10 @@
     <input type="hidden" name="parada" value="{{datos[1]}}" id="parada">
     {%endfor%}
     </li>
+    <input type="hidden" name="item" value="1">
+    <input type="hidden" name="gastos" value="REPORTE DE GASTOS" id="gastos">       
+    <input type="hidden" name="president" value="{{cabecera[1]}}" id="president">
+    <input type="hidden" name="miembros" value="{{cabecera[0]}}" id="miembros">   
     <li>
     <label for="fecha">
     <em>FECHA:</em>  
@@ -310,11 +324,11 @@
     </select>
     </li>
     <li>  
-    <label for="cantidad" >
-    <em>CANTIDA:</em>  
-    <input type="text" name="cantidad_g"id="cantidad" placeholder="Ingresar la cantidad" required >
+    <label for="monto" >
+    <em>MONTO:</em>  
+    <input type="text" name="cantidad_g"id="monto" placeholder="Ingresar el monto" required >
     </label>
-    </li>
+    </li>    
     </ol>           
     <div class="d-flex gap-2 justify-content-center py-5">
     <button class="btn btn-primary rounded-pill px-3" type="reset">Borrar</button>
@@ -340,8 +354,8 @@
     </div>   
     <!-- Modal body -->
     <div class="modal-body list_pago">
+    <h1>REPORTE DE INGRESOS</h1>
     <form action="data_ingresos" method="POST">
-    <h1>REPORTE DE INGRESOS</h1>       
     <ol> 
     <li>   
     {%for datos in informacion %}
@@ -354,7 +368,12 @@
     <em>FECHA:</em> 
     <input type="text" name="time" value="{{fecha}}" id="fecha">
     </label>
-    </li>         
+    </li>
+    <li>   
+    <input type="hidden" name="item" value="1" >
+    <input type="hidden" name="ingresos" value="REPORTE DE INGRESOS" id="titulo">       
+    <input type="hidden" name="president" value="{{cabecera[1]}}" id="president">
+    <input type="hidden" name="miembros" value="{{cabecera[0]}}" id="miembros">           
     <li>      
     <label for="descripcion_i">
     <em>DESCRIPCION:</em>  
@@ -367,11 +386,11 @@
       <option value="Recaudacion de Fondo">Recaudacion de Fondo</option>
       <option value="Ingreso segun recibo anexo">Ingreso segun recibo anexo</option>
     </select>
-    </li>
+    </li>  
     <li>
     <label for="cantidad">
-    <em>CANTIDA:</em> 
-    <input type="text" name="cantidad_i" id="cantidad" placeholder="Ingresar la cantidad" required>
+    <em>MONTO:</em> 
+    <input type="text" name="cantidad_i" id="cantidad" placeholder="Ingresar monto" required>
     </label>         
     </li>
     </ol>             
@@ -399,7 +418,7 @@
     <!-- Modal body -->
     <div class="modal-body list_pago">
     <form action="/data_prestamos" method="POST">  
-    <h1>REPORTE PRESTAMOS</h1></legend>    
+    <h1>REPORTE  DE PRESTAMOS</h1></legend>    
     {%for datos in informacion %}   
     <input type="hidden" name="parada" value="{{datos[1]}}" id="parada">  
     {%endfor%}      
@@ -409,6 +428,10 @@
     <h1>PARADA: {{datos[1]}}</h1>
     {%endfor%}
     </li> 
+    <input type="hidden" name="item" value="1" >
+    <input type="hidden" name="prestamos" value="REPORTE DE PRESTAMOS" id="titulo">       
+    <input type="hidden" name="president" value="{{cabecera[1]}}" id="president">
+    <input type="hidden" name="miembros" value="{{cabecera[0]}}" id="miembros">
     <li>   
     <input type="text" name="time" value="{{fecha}}" id="fecha" readonly> 
     </li> 
@@ -462,7 +485,11 @@
     {%for datos in informacion %}
     <h1>PARADA: {{datos[1]}}</h1>
     {%endfor%} 
-    </li>                   
+    </li>
+    <input type="hidden" name="item" value="1" >
+    <input type="hidden" name="abonos" value="ABONO A PRESTAMOS" id="titulo">       
+    <input type="hidden" name="president" value="{{cabecera[1]}}" id="president">
+    <input type="hidden" name="miembros" value="{{cabecera[0]}}" id="miembros">                   
     <li>
     <label for="fecha">
     <em>FECHA:</em>  
@@ -471,7 +498,7 @@
     </li>
     <li>
     <label for="abonar">ABONAR A:</label>
-    <select name="descripcion_a" id="abonar">                 
+    <select name="descripcion_a" id="abonar" required>                 
       <option value=""></option>
       {% for usuario in prestamos %}
       <option value="{{usuario[0]}}" >{{usuario[0]}}</option>
@@ -537,9 +564,19 @@
       <option value="Retiro">Retiro</option>                          
     </select> 
     </li> 
+    <input type="hidden" name="item" value="1" >
+    <input type="hidden" name="bancaria" value="INFORMACION BANCARIA" id="titulo">       
+    <input type="hidden" name="president" value="{{cabecera[1]}}" id="president">
+    <input type="hidden" name="miembros" value="{{cabecera[0]}}" id="miembros"> 
     <li>    
-    <label for="balance">
-    <em>Cantidad:</em>  
+    <label for="monto">
+    <em>monto:</em>  
+    <input type="text" name="monto" placeholder="Ingresar monto" id="monto" required >
+    </label>
+    </li>
+    <li>    
+    <label for="balance">     
+    <em>Balance:</em>  
     <input type="text" name="balance" placeholder="Ingresar monto" id="balance" required >
     </label>
     </li>
@@ -718,7 +755,121 @@
     </div>
     </div>
     </div> 
-    </div>     
+    </div>    
+    
+    
+    <div class="modal fade" id="myModal8">
+      <div class="modal-dialog">
+      <div class="modal-content">   
+      <!-- Modal Header -->
+      <div class="modal-header">
+      <h1 class="modal-title">ESTADO FINANCIERO</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div> 
+      <div class="modal-body list_pago">
+
+        <div class="col-lg-4 themed-grid-col list_pago">   
+          <h1>INFORMACION FINANCIERA</h1>
+          <table>
+          <tr>
+            <th>Item</th>
+            <th>Informacion financiera</th>
+            <th>Total al momento</th>
+          
+          </tr>
+          <tr>
+          <tD>1</tD>
+          <td>aporta de los asociados :</td>
+          <td>{{diario[2]}}RD$</td>
+        </tr>
+        <tr>
+          <tD>2</tD>
+          <td>ingresos por otras actividades :</td>
+          <td> {{diario[4]}}RD$</td>
+        </tr>
+        <tr>
+        <tD>3</tD>
+        <td>Prestamos a los asociados :</td>
+        <td>{{diario[1]}}RD$</td>
+      </tr>
+        <tr>
+          <tD>4</tD>
+          <td> abonos a prestamos :</td>
+          <td>{{diario[6]}}RD$</td>
+        </tr>
+        <tr>
+          <tD>5</tD>
+          <td>cuotas no pagadas :</td>
+          <td>{{diario[5]}}RD$</td>
+        </tr>
+        <tr>
+          <tD>6</tD>
+          <td> gastos incurridos de parada :</td>
+          <td>{{diario[3]}}RD$</td>
+        </tr>
+        <tr>
+        <tD>7</tD>
+        <td>Balance General:</td>
+        <td>{{diario[0]}}RD$</td>
+        </tr>
+        <tr>
+        <tD>8</tD>
+          <td>balance bancario :</td>
+        <td>{{diario[7]}}RD$</td>
+        </tr>
+          </table>
+  </div>
+
+    <!-- Modal footer -->
+    <div class="modal-footer">
+    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+    </div>
+    </div>
+    </div>
+    </div> 
+    </div>
+    
+    <div class="modal fade" id="myModal9">
+      <div class="modal-dialog">
+      <div class="modal-content">   
+      <!-- Modal Header -->
+      <div class="modal-header">
+      <h1 class="modal-title">ESTADO DE PAGOS</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div> 
+      <div class="modal-body list_pago">
+
+        <div class="col-lg-4 themed-grid-col list_pago">   
+          <h1>Historial de Aportes y Pendientes</h1>
+          <table>
+            <tr>
+              <th> asociado</th>
+              <th>cuotas</th>
+              <th>pagadas</th>
+              <th>Pendientes</th>
+              <th>pagos(%)</th>
+            </tr>             
+            {% for usuario in cuotas_hist %}
+            <tr>
+              <td>{{usuario[0]}}</td>
+              <td>{{usuario[3]}}</td>
+              <td>{{usuario[1]}}</td>
+              <td>{{usuario[2]}}</td>
+              <td>{{usuario[4]}}%</td>
+            </tr>  
+            {%endfor%}             
+            </table>
+        </div>         
+
+    <!-- Modal footer -->
+    <div class="modal-footer">
+    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+    </div>
+    </div>
+    </div>
+    </div> 
+    </div>
+
 
     <div class="col-lg-4  align-self-center justify-content-center">
     <a class = "btn  btn-primary "  href="{{url_for('canal')}}" type="html" role="button">Canal MotoBen &raquo;</a>

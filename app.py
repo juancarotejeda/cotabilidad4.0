@@ -1,5 +1,6 @@
 import mysql.connector,funciones,os
-from flask import Flask, render_template,flash, request,  redirect, url_for
+from flask import Flask, render_template,flash, request,  redirect, url_for,make_response
+from PIL import Image, ImageDraw, ImageFont
 from datetime import datetime
 from dotenv import load_dotenv
 load_dotenv()
@@ -42,12 +43,12 @@ def verificador():
             datos=funciones.aportacion(cur,parada) 
             nombre =  funciones.info_personal(cur,parada,cedula)
             prestamo = funciones.verificar_prestamo(cur,parada,cedula)
-            pagos = funciones.hist_pago(cur,parada,nombre,cedula)        
+            pagos = funciones.hist_pago(cur,parada,nombre)        
             cur.close()           
             if cabecera[2] !=cedula:
                return render_template('index.html',informacion=informacion,cabecera=cabecera,fecha=fecha,miembros=miembros,diario=diario,cuotas_hist=cuotas_hist,nombre=nombre,prestamo=prestamo,pagos=pagos)   
             else: 
-                return render_template("presidente.html",informacion=informacion,miembros=miembros,datos=datos,cabecera=cabecera,fecha=fecha,diario=diario,prestamos=prestamos,parada=parada,pagos=pagos)             
+                return render_template("presidente.html",informacion=informacion,miembros=miembros,datos=datos,cabecera=cabecera,fecha=fecha,diario=diario,prestamos=prestamos,parada=parada,pagos=pagos,cuotas_hist=cuotas_hist)             
     else:
         msg = 'cedula no esta registrada!'        
         flash(msg)           
@@ -59,8 +60,10 @@ def verificador():
 def cuotas():   
     if request.method == 'POST': 
         my_list=[]
-        parada=request.form['parada']  
-        hoy = request.form['time']
+        titulo=request.form['listado']  
+        president=request.form['president'] 
+        parada=request.form['parada'] 
+        fecha=request.form['time']
         cant=request.form['numero']
         valor_cuota=request.form['valor']
         for i in range(int(cant)): 
@@ -69,75 +72,101 @@ def cuotas():
                     request.form.getlist('nombre')[i],
                     request.form.getlist('cedula')[i])  
         string=funciones.dividir_lista(my_list,4)
+        info_string=funciones.info_cuotas(string, valor_cuota)
         cur = connection.cursor()     
-        funciones.crear_pago(cur,parada,string,valor_cuota,hoy)  
+        funciones.crear_pago(cur,parada,string,valor_cuota,fecha) 
+        pdf=funciones.imprimir_lista(cur,parada,fecha,string,valor_cuota,titulo,president,cant,info_string )
         cur.close() 
-        msg='Exito!!!' 
-        flash(msg)
-        return '<h1>Exito</h1>'
-
+        return render_template('imprimir.html',pdf=pdf) 
 
 @app.route("/data_gastos",methods=["GET","POST"])
 def data_gastos():
     if request.method == 'POST':
-       parada=request.form['parada']  
+       titulo=request.form['gastos']  
+       president=request.form['president'] 
+       parada=request.form['parada'] 
        fecha=request.form['time']
-       descripcion_gastos = request.form['descripcion_g'] 
-       cantidad_gastos = request.form['cantidad_g']      
+       miembros=request.form['miembros']
+       item = request.form['item'] 
+       descripcion = request.form['descripcion_g'] 
+       cantidad = request.form['cantidad_g']      
        cur = connection.cursor()    
-       funciones.report_gastos(cur,parada,fecha,descripcion_gastos,cantidad_gastos)  
+       funciones.report_gastos(cur,parada,fecha,descripcion,cantidad)  
+       pdf=funciones.imprimir(cur,parada,fecha,descripcion,cantidad,titulo,president,miembros,item)
        cur.close() 
-       return '<h1>Exito</h1>'
+       return render_template('imprimir.html',pdf=pdf)
         
 @app.route("/data_ingresos",methods=["GET","POST"])
 def data_ingresos(): 
     if request.method == 'POST':
+       titulo=request.form['ingresos']  
+       president=request.form['president'] 
        parada=request.form['parada'] 
        fecha=request.form['time']
-       descripcion_ingreso = request.form['descripcion_i'] 
-       cantidad_ingreso = request.form['cantidad_i'] 
+       miembros=request.form['miembros']
+       item = request.form['item'] 
+       descripcion = request.form['descripcion_i'] 
+       cantidad = request.form['cantidad_i'] 
        cur = connection.cursor() 
-       funciones.report_ingresos(cur,parada,fecha,descripcion_ingreso,cantidad_ingreso)          
+       funciones.report_ingresos(cur,parada,fecha,descripcion,cantidad)          
+       pdf=funciones.imprimir(cur,parada,fecha,descripcion,cantidad,titulo,president,miembros,item )
        cur.close()
-       return '<h1>Exito</h1>'
+       return render_template('imprimir.html',pdf=pdf)
                     
 @app.route("/data_prestamos",methods=["GET","POST"])
 def data_prestamos(): 
     if request.method == 'POST':
-       parada=request.form['parada']             
-       fecha=request.form['time']              
+       titulo=request.form['prestamos']  
+       president=request.form['president'] 
+       parada=request.form['parada'] 
+       fecha=request.form['time']
+       miembros=request.form['miembros']  
+       item = request.form['item']           
        prestamo = request.form['descripcion_p'] 
        monto = request.form['cantidad_p']
        cur = connection.cursor() 
-       funciones.report_prestamo(cur,parada,fecha,prestamo,monto)          
+       funciones.report_prestamo(cur,parada,fecha,prestamo,monto)
+       pdf=funciones.imprimir(cur,parada,fecha,prestamo,monto,titulo,president,miembros,item )          
        cur.close()
-       return '<h1>Exito</h1>'
+       return render_template('imprimir.html',pdf=pdf)
 
 @app.route("/data_abonos",methods=["GET","POST"])
 def data_abonos(): 
     if request.method == 'POST': 
-       parada=request.form['parada']                
-       fecha=request.form['time']       
+       titulo=request.form['abonos']  
+       president=request.form['president'] 
+       parada=request.form['parada'] 
+       fecha=request.form['time']
+       miembros=request.form['miembros'] 
+       item = request.form['item']       
        abono_a = request.form['descripcion_a'] 
        cantidad_a = request.form['cantidad_a']  
        cur = connection.cursor() 
        funciones.report_abono(cur,parada,fecha,abono_a,cantidad_a)          
+       pdf=funciones.imprimir(cur,parada,fecha,abono_a,cantidad_a,titulo,president,miembros,item )  
        cur.close()
-       return '<h1>Exito</h1>' 
+       return render_template('imprimir.html',pdf=pdf)
    
 @app.route("/data_bancos",methods=["GET","POST"])
 def data_bancos(): 
     if request.method == 'POST':
+       titulo=request.form['bancaria']  
+       president=request.form['president'] 
        parada=request.form['parada'] 
-       fecha = request.form['time']
+       fecha=request.form['time']
+       miembros=request.form['miembros'] 
        banco = request.form['banco'] 
        cuenta = request.form['cuenta'] 
-       operacion = request.form['operacion']
+       movimiento = request.form['operacion']
+       item = request.form['item'] 
+       monto = request.form['monto']
        balance = request.form['balance']
+       operacion= f"operacion de {movimiento} en la cuenta # {cuenta} de el {banco}"
        cur = connection.cursor() 
-       funciones.estado_bancario(cur,parada,fecha,banco,cuenta,operacion,balance)      
+       funciones.estado_bancario(cur,parada,fecha,banco,cuenta,operacion,monto,balance)       
+       pdf=funciones.imprimir(cur,parada,fecha,operacion,monto,titulo,president,miembros,item )   
        cur.close()  
-       return '<h1>Exito</h1>' 
+       return render_template('imprimir.html',pdf=pdf)
     
 @app.route("/enviar",methods=["GET","POST"])   
 def enviar():
@@ -153,11 +182,7 @@ def canal():
 
 @app.route("/presidente")
 def presidente():
-    return render_template('presidente.html')
-
-
-
-   
+    return render_template('presidente.html')   
 
 if __name__ == "__main__":
     app.run(debug=True,host='0.0.0.0',port=6800)

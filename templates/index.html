@@ -146,11 +146,64 @@
     <div class="container">
     <div class="row mb-3 text-center">  
       <img class="mb-4" src="/static/imagenes/indotel.gif" alt="" width="300" height="120">
+    </div>
+    
+     
     <div class="col-lg-4  list_pago "> 
     <h1>Gracias por aceptar esta aplicacion!!</h1>
     <p class="lead">Este es un enorme esfuerzo realizado por El presidente de tu parada,la Federaciones de mototaxis.Con el apollo de la <code> SUBDIRECCION DEL INTRAN</code><br>
      y <code>GRUPO ACTEC</code> Para darle Formalidad la labor que ustedes realizan</p>
+    </div>  
+    
+    <article class="my-3" id="modal">
+      <div class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <h3>Seleccinar</h3>   
+      <div class="bd-example-snippet bd-code-snippet">
+      <div class="bd-example m-0 border-0">    
+      <div class="d-flex justify-content-between flex-wrap">
+      <button type="button" class="btn btn-primary w-25 h-20" data-bs-toggle="modal" data-bs-target="#myModal1">
+        <h6><small>Informacion de la parada</small></h6>
+      </button>
+      <button type="button" class="btn btn-primary w-25 h-20 " data-bs-toggle="modal" data-bs-target="#myModal2">
+        <h6><small>Informacion personal</small></h6>
+      </button>
+      <button type="button" class="btn btn-primary w-25 h-20" data-bs-toggle="modal" data-bs-target="#myModal3">
+        <h6><small>Miembros de la parada</small></h6>
+      </button>
+      <button type="button" class="btn btn-primary w-25 h-20" data-bs-toggle="modal" data-bs-target="#myModal4">
+       <h6><small>Informacion Financiera</small></h6>
+      </button>
+      <button type="button" class="btn btn-primary w-25 h-20" data-bs-toggle="modal" data-bs-target="#myModal5">
+        <h6><small>Historial de Pagos</small></h6>
+      </button>
+      <button type="button" class="btn btn-warning w-25 h-20" data-bs-toggle="modal" data-bs-target="#myModal6">
+        <h6><small>Sociales MotoBen</small></h6>
+      </button>
+
+      <div class="col-lg-4 p-0 w-100 ">
+        <a class = "btn btn-lg btn-danger"  href="{{url_for('canal')}}" type="html" role="button">Canal MotoBen &raquo;</a>  
+      </div>
+    </div>       
+
     </div>    
+    </div>
+    </div> 
+    </div>  
+    </article>  
+
+
+
+
+    <div class="modal fade" id="myModal1">
+      <div class="modal-dialog">
+      <div class="modal-content">   
+      <!-- Modal Header -->
+      <div class="modal-header">
+      <h1 class="modal-title">INFORMACION DE LA PARADA</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div> 
+      <div class="modal-body list_pago">
+
         <div class="col-lg-4  list_pago bg-warning">  
         {%for datos in informacion %}   
         <h1>INFORMACION DE LA PARADA</h1>  
@@ -199,6 +252,26 @@
         </ol>
         {%endfor%}
       </div>
+    <!-- Modal footer -->
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+      </div>
+      </div>
+      </div> 
+      </div>
+
+
+      <div class="modal fade" id="myModal2">
+        <div class="modal-dialog">
+        <div class="modal-content">   
+        <!-- Modal Header -->
+        <div class="modal-header">
+        <h1 class="modal-title">INFORMACION PERSONAL</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div> 
+        <div class="modal-body list_pago">
+
       <div class="col-lg-4 info-personal text-bg-danger  ">
         <h1>INFORMACION PERSONAL</h1>
         <p>Saludos Señor(a) {{nombre}} {{prestamo}}. 
@@ -207,6 +280,27 @@
         <h3>Mensaje de la FEDERACION Y ACTEC</h3>
         </p>
       </div>
+    <!-- Modal footer -->
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+      </div>
+      </div>
+      </div> 
+      </div>
+
+
+
+      <div class="modal fade" id="myModal3">
+        <div class="modal-dialog">
+        <div class="modal-content">   
+        <!-- Modal Header -->
+        <div class="modal-header">
+        <h1 class="modal-title">Miembros Registrado</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div> 
+        <div class="modal-body list_pago">
+
       <div class="col-lg-4  list_pago ">
       <h1>Miembros Registrado</h1>
       <table>
@@ -227,8 +321,28 @@
         </tr>
         {%endfor%}
       </table>
-      </div>     
-      <div class="col-lg-4 themed-grid-col list_pago">   
+      </div> 
+    <!-- Modal footer -->
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+      </div>
+      </div>
+      </div> 
+      </div>  
+      
+      
+      <div class="modal fade" id="myModal4">
+        <div class="modal-dialog">
+        <div class="modal-content">   
+        <!-- Modal Header -->
+        <div class="modal-header">
+        <h1 class="modal-title">ESTADO FINANCIERO</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div> 
+        <div class="modal-body list_pago">
+  
+          <div class="col-lg-4 themed-grid-col list_pago">   
             <h1>INFORMACION FINANCIERA</h1>
             <table>
             <tr>
@@ -279,36 +393,58 @@
           </tr>
             </table>
     </div>
-        <div class="col-lg-4 themed-grid-col list_pago">   
-        <h1>Historial de Aportes y Pendientes</h1>
-        <table>
-          <tr>
-            <th> asociado</th>
-            <th>cuotas</th>
-            <th>pagadas</th>
-            <th>Pendientes</th>
-            <th>pagos(%)</th>
-          </tr>             
-          {% for usuario in cuotas_hist %}
-          <tr>
-            <td>{{usuario[0]}}</td>
-            <td>{{usuario[3]}}</td>
-            <td>{{usuario[1]}}</td>
-            <td>{{usuario[2]}}</td>
-            <td>{{usuario[4]}}%</td>
-          </tr>  
-          {%endfor%}             
-          </table>
-      </div>     
-      <div class="col-lg-4 themed-grid-col  p-1">
-        <a class = "btn btn-lg btn-primary p-1"  href="{{url_for('canal')}}" type="html" role="button">Canal MotoBen &raquo;</a> 
-        <button type="button" class="btn btn-lg btn-primary p-1 " data-bs-toggle="modal" data-bs-target="#myModal7">
-         Sociales MotoBen
-        </button>  
+  
+      <!-- Modal footer -->
+      <div class="modal-footer">
+      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
       </div>
-    </div> 
+      </div>
+      </div>
+      </div> 
+      </div>
+      
+      <div class="modal fade" id="myModal5">
+        <div class="modal-dialog">
+        <div class="modal-content">   
+        <!-- Modal Header -->
+        <div class="modal-header">
+        <h1 class="modal-title">ESTADO DE PAGOS</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div> 
+        <div class="modal-body list_pago">
+  
+          <div class="col-lg-4 themed-grid-col list_pago">   
+            <h1>Historial de Aportes y Pendientes</h1>
+            <table>
+              <tr>
+                <th> asociado</th>
+                <th>cuotas</th>
+                <th>pagadas</th>
+                <th>Pendientes</th>
+                <th>pagos(%)</th>
+              </tr>             
+              {% for usuario in cuotas_hist %}
+              <tr>
+                <td>{{usuario[0]}}</td>
+                <td>{{usuario[3]}}</td>
+                <td>{{usuario[1]}}</td>
+                <td>{{usuario[2]}}</td>
+                <td>{{usuario[4]}}%</td>
+              </tr>  
+              {%endfor%}             
+              </table>
+          </div>         
+  
+      <!-- Modal footer -->
+      <div class="modal-footer">
+      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+      </div>
+      </div>
+      </div> 
+      </div>
     
-    <div class="modal fade" id="myModal7">
+    <div class="modal fade" id="myModal6">
       <div class="modal-dialog  modal-lg">
       <div class="modal-content">   
       <!-- Modal Header -->
@@ -467,9 +603,9 @@
     </div>
     </div>
     </div> 
-    </div>    
+    </div>  
+    
 </main>
 <script src="/static/js/min.js"></script>
-
-    </body>
+</body>
 </html>

@@ -1,16 +1,96 @@
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
-  <head>
+  <head><script src="/static/js/color-modes.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Canal MB</title>
-    <link rel="webside icon" type="png" href="/static/imagenes/favicon/favicon-32x32.png">
-    <link href="/static/css/min.css" rel="stylesheet"> 
-    <link href="/static/css/navbars.css" rel="stylesheet">   
-    <!-- Custom styles for this template -->  
-    <script src="/static/js/min.js"></script>
-    <script src="/static/js/color-modes.js"></script> 
-   <script src="/static/js/mostrar.js"></script>   
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.122.0">
+    <title>Choferes</title>
+    <link rel="webside icon" type="png" href="/static/favicon/favicon-32x32.png">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/grid/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link href="/static/css/min.css" rel="stylesheet">
+  <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+
+      .bd-mode-toggle .dropdown-menu .active .bi {
+        display: block !important;
+      }
+  </style>   
+    <!-- Custom styles for this template -->
+  <link href="/static/css/grid.css" rel="stylesheet">
   </head>
   <body>
     <div class="containner"></div>
@@ -75,9 +155,9 @@
         <div class="col-sm-4 offset-md-1 py-4">
           <h4>Contact</h4>
           <ul class="list-unstyled">
-            <li><a href="#" class="text-white">Follow on Twitter</a></li>
-            <li><a href="#" class="text-white">Like on Facebook</a></li>
-            <li><a href="#" class="text-white">Email me</a></li>
+            <li><a href="#" class="text-white">Siguenos en X</a></li>
+            <li><a href="#" class="text-white">Facebook</a></li>
+            <li><a href="#" class="text-white">Email</a></li>
           </ul>
         </div>
       </div>
@@ -97,7 +177,6 @@
 </header>
   <div class="album py-5 bg-body-tertiary">
     <div class="container">
-
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col">
           <div class="card shadow-sm">
@@ -106,7 +185,7 @@
               <p class="card-text"></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle='modal' data-target='#MyModal'>View</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                 </div>
                 <small class="text-body-secondary">#1</small>
@@ -114,6 +193,7 @@
             </div>
           </div>
         </div>
+
         <div class="col">
           <div class="card shadow-sm">
             <video class="bd-placeholder-img card-img-top" width="100%" height="225" src="/static/imagenes/M.Rodriguez.mp4" controls ></video>
@@ -246,8 +326,30 @@
       <a href="#">Regresar</a>
     </p>
     <p class="mb-1">Album de motoben &copy; </p>
-    <p class="mb-0">Salir <a href="/">Regresar a la pagina de entrada</a>Ir a la pagina prinsipal<a href="../getting-started/introduction/">getting started guide</a>.</p>
+    <p class="mb-0">Salir <a href="/">Regresar a la pagina de entrada</a>Ir a la pagina principal<a href="../getting-started/introduction/">getting started guide</a>.</p>
   </div>
 </footer>
+
+<!-- Modal -->
+<div id="MyModal" class="modal fade" role="dialog">
+<div class="modal-dialog">
+<!-- Modal content-->
+<div class="modal-content">
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal">&times;</button>
+  <h4 class="modal-title">Modal Header</h4>
+</div>
+<div class="modal-body">
+  <img src="/static/imagenes/paya-noche.jpg" alt="#">
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/static/js/min.js"></script>
  </body>
 </html>
