@@ -1,8 +1,8 @@
-import mysql.connector,funciones,os
+import funciones,os,mysql.connector
 from flask import Flask, render_template,flash, request,  redirect, url_for,make_response
-from PIL import Image, ImageDraw, ImageFont
 from datetime import datetime
 from dotenv import load_dotenv
+
 load_dotenv()
 
 app = Flask(__name__)
@@ -12,7 +12,7 @@ DB_USERNAME =os.getenv("DB_USERNAME")
 DB_PASSWORD =os.getenv("DB_PASSWORD")
 DB_NAME =os.getenv("DB_NAME")
 
-# Connect to the database
+
 connection = mysql.connector.connect(
     host=DB_HOST,
     user=DB_USERNAME,
@@ -20,6 +20,7 @@ connection = mysql.connector.connect(
     database=DB_NAME,
     autocommit=True
 )
+
 
 @app.route("/")
 def login():                     
@@ -30,7 +31,7 @@ def verificador():
    msg = ''   
    if request.method == 'POST':        
     cedula = request.form['cedula']  
-    cur = connection.cursor() 
+    cur =connection.cursor()
     parada=funciones.vef_cedula(cur,cedula)   
     if parada!= []:                                                                             
             fecha = datetime.strftime(datetime.now(),"%Y %m %d - %H")            
@@ -73,7 +74,7 @@ def cuotas():
                     request.form.getlist('cedula')[i])  
         string=funciones.dividir_lista(my_list,4)
         info_string=funciones.info_cuotas(string, valor_cuota)
-        cur = connection.cursor()     
+        cur =connection.cursor()     
         funciones.crear_pago(cur,parada,string,valor_cuota,fecha) 
         pdf=funciones.imprimir_lista(cur,parada,fecha,string,valor_cuota,titulo,president,cant,info_string )
         cur.close() 

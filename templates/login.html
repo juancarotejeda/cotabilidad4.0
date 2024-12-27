@@ -167,9 +167,10 @@
         Recordar
       </label>
     </div>
-    <button class="btn btn-primary w-100 py-2" type="submit">ENTRAR</button>
-    <p class="mt-5 mb-3 text-body-secondary">&copy; Actec-2014–2024</p>
+    <button class="btn btn-primary w-100 py-2 mb-2" type="submit">ENTRAR</button>
+    <button class="btn btn-danger w-100 py-2 mb-2" type="reset">BORRAR</button>
   </form>
+  <button class="btn btn-warning w-100 py-2 mb-2" type="button" data-bs-toggle="modal" data-bs-target="#myModal001" >Visite Canal MotoBen</button>
   <div class="col-lg-4 themed-grid-col pagos">    
     {% with messages = get_flashed_messages()%}
     {% if messages%}
@@ -179,6 +180,30 @@
     {%endif%}
     {%endwith%} 
   </div> 
+
+  <div class="modal fade" id="myModal001">
+    <div class="modal-dialog">
+    <div class="modal-content">   
+    <!-- Modal Header -->
+    <div class="modal-header">
+    <h1 class="modal-title">Nuestra Web</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    </div> 
+  <!-- Modal body -->
+  <div class="modal-body "> 
+  <div class="embed-responsive embed-responsive-16by9" >
+    <a class="btn btn-lg btn-primary" href="https://www.youtube.com/@grupo_atecMotoBen" type="html" role="button">Canal MotoBen &raquo;</a>
+  </div> 
+    <!-- Modal footer -->
+ <div class="modal-footer">
+  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+  </div>
+  </div>
+  </div>
+  </div> 
+  </div> 
+
+
 </main>
 <script src="/static/js/min.js"></script>
 
