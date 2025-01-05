@@ -75,7 +75,6 @@ def cuotas():
                     request.form.getlist('nombre')[i],
                     request.form.getlist('cedula')[i])      
         string=funciones.dividir_lista(my_list,4)
-        info_string=funciones.info_cuotas(string, valor_cuota)
         cur =connection.cursor()     
         funciones.crear_pago(cur,parada,string,valor_cuota,fecha) 
         cur.close() 
