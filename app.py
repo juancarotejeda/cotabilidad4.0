@@ -29,7 +29,8 @@ def login():
 @app.route("/verificador", methods=["GUET","POST"])
 def verificador(): 
    msg = ''   
-   if request.method == 'POST':        
+   if request.method == 'POST': 
+    global parada ,cedula          
     cedula = request.form['cedula']  
     cur =connection.cursor()
     parada=funciones.vef_cedula(cur,cedula)   
@@ -59,7 +60,8 @@ def verificador():
 
 @app.route("/cuotas", methods=["GET","POST"])
 def cuotas():   
-    if request.method == 'POST': 
+    if request.method == 'POST':
+        print('post') 
         my_list=[]
         titulo=request.form['listado']  
         president=request.form['president'] 
@@ -68,17 +70,16 @@ def cuotas():
         cant=request.form['numero']
         valor_cuota=request.form['valor']
         for i in range(int(cant)): 
-            my_list +=(request.form.getlist('item')[i],
+            my_list +=(request.form.getlist('item')[i],  
                     request.form.getlist('select')[i],
                     request.form.getlist('nombre')[i],
-                    request.form.getlist('cedula')[i])  
+                    request.form.getlist('cedula')[i])      
         string=funciones.dividir_lista(my_list,4)
         info_string=funciones.info_cuotas(string, valor_cuota)
         cur =connection.cursor()     
         funciones.crear_pago(cur,parada,string,valor_cuota,fecha) 
-        pdf=funciones.imprimir_lista(cur,parada,fecha,string,valor_cuota,titulo,president,cant,info_string )
         cur.close() 
-        return render_template('imprimir.html',pdf=pdf) 
+        return render_template("presidente.html") 
 
 @app.route("/data_gastos",methods=["GET","POST"])
 def data_gastos():
@@ -89,13 +90,12 @@ def data_gastos():
        fecha=request.form['time']
        miembros=request.form['miembros']
        item = request.form['item'] 
-       descripcion = request.form['descripcion_g'] 
+       descripcion = request.form['browsers'] 
        cantidad = request.form['cantidad_g']      
        cur = connection.cursor()    
        funciones.report_gastos(cur,parada,fecha,descripcion,cantidad)  
-       pdf=funciones.imprimir(cur,parada,fecha,descripcion,cantidad,titulo,president,miembros,item)
        cur.close() 
-       return render_template('imprimir.html',pdf=pdf)
+       return redirect(url_for('enviar'))  
         
 @app.route("/data_ingresos",methods=["GET","POST"])
 def data_ingresos(): 
@@ -110,10 +110,10 @@ def data_ingresos():
        cantidad = request.form['cantidad_i'] 
        cur = connection.cursor() 
        funciones.report_ingresos(cur,parada,fecha,descripcion,cantidad)          
-       pdf=funciones.imprimir(cur,parada,fecha,descripcion,cantidad,titulo,president,miembros,item )
        cur.close()
-       return render_template('imprimir.html',pdf=pdf)
-                    
+       return redirect(url_for('enviar'))        
+   
+         
 @app.route("/data_prestamos",methods=["GET","POST"])
 def data_prestamos(): 
     if request.method == 'POST':
@@ -126,10 +126,9 @@ def data_prestamos():
        prestamo = request.form['descripcion_p'] 
        monto = request.form['cantidad_p']
        cur = connection.cursor() 
-       funciones.report_prestamo(cur,parada,fecha,prestamo,monto)
-       pdf=funciones.imprimir(cur,parada,fecha,prestamo,monto,titulo,president,miembros,item )          
+       funciones.report_prestamo(cur,parada,fecha,prestamo,monto)        
        cur.close()
-       return render_template('imprimir.html',pdf=pdf)
+       return redirect(url_for('enviar'))  
 
 @app.route("/data_abonos",methods=["GET","POST"])
 def data_abonos(): 
@@ -144,9 +143,9 @@ def data_abonos():
        cantidad_a = request.form['cantidad_a']  
        cur = connection.cursor() 
        funciones.report_abono(cur,parada,fecha,abono_a,cantidad_a)          
-       pdf=funciones.imprimir(cur,parada,fecha,abono_a,cantidad_a,titulo,president,miembros,item )  
        cur.close()
-       return render_template('imprimir.html',pdf=pdf)
+       return redirect(url_for('enviar'))  
+  
    
 @app.route("/data_bancos",methods=["GET","POST"])
 def data_bancos(): 
@@ -164,17 +163,27 @@ def data_bancos():
        balance = request.form['balance']
        operacion= f"operacion de {movimiento} en la cuenta # {cuenta} de el {banco}"
        cur = connection.cursor() 
-       funciones.estado_bancario(cur,parada,fecha,banco,cuenta,operacion,monto,balance)       
-       pdf=funciones.imprimir(cur,parada,fecha,operacion,monto,titulo,president,miembros,item )   
-       cur.close()  
-       return render_template('imprimir.html',pdf=pdf)
+       funciones.estado_bancario(cur,parada,fecha,banco,cuenta,operacion,monto,balance)        
+       cur.close() 
+       return redirect(url_for('enviar'))   
+
     
 @app.route("/enviar",methods=["GET","POST"])   
 def enviar():
-    if request.method == 'POST':
-        parada=request.form['envio'] 
-        print(parada)
-        return
+            cur = connection.cursor() 
+            fecha = datetime.strftime(datetime.now(),"%Y %m %d - %H")            
+            informacion = funciones.info_parada(cur,parada) 
+            cabecera = funciones.info_cabecera(cur,parada) 
+            prestamos=funciones.lista_prestamos(cur,parada)
+            miembros = funciones.lista_miembros(cur,parada)                
+            diario = funciones.diario_general(cur,parada) 
+            cuotas_hist = funciones.pendiente_aport(cur,parada)
+            datos=funciones.aportacion(cur,parada) 
+            nombre =  funciones.info_personal(cur,parada,cedula)
+            prestamo = funciones.verificar_prestamo(cur,parada,cedula)
+            pagos = funciones.hist_pago(cur,parada,nombre)        
+            cur.close()           
+            return render_template("presidente.html",informacion=informacion,miembros=miembros,datos=datos,cabecera=cabecera,fecha=fecha,diario=diario,prestamos=prestamos,parada=parada,pagos=pagos,cuotas_hist=cuotas_hist)    
        
 
 @app.route("/canal")

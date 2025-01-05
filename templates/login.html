@@ -151,9 +151,17 @@
 
     
 <main class="form-signin w-100 m-auto">
-   
+  <div class="col-lg-4 themed-grid-col pagos">    
+    {% with messages = get_flashed_messages()%}
+    {% if messages%}
+    {% for message in messages%}
+       <div class="msg">{{message}}</div>
+    {%endfor%}
+    {%endif%}
+    {%endwith%} 
+  </div>    
   <form action="/verificador" method="POST">
-    <img class="mb-4" src="/static/imagenes/indotel.gif" alt="" width="300" height="80">
+
     <h1 class="h3 mb-3 fw-normal">POR FAVOR</h1>
 
     <div class="form-floating">
@@ -168,42 +176,9 @@
       </label>
     </div>
     <button class="btn btn-primary w-100 py-2 mb-2" type="submit">ENTRAR</button>
-    <button class="btn btn-danger w-100 py-2 mb-2" type="reset">BORRAR</button>
   </form>
+  <img class="mb-2" src="/static/imagenes/indotel.gif" alt="" width="300" height="80">
   <button class="btn btn-warning w-100 py-2 mb-2" type="button" data-bs-toggle="modal" data-bs-target="#myModal001" >Visite Canal MotoBen</button>
-  <div class="col-lg-4 themed-grid-col pagos">    
-    {% with messages = get_flashed_messages()%}
-    {% if messages%}
-    {% for message in messages%}
-       <div class="msg">{{message}}</div>
-    {%endfor%}
-    {%endif%}
-    {%endwith%} 
-  </div> 
-
-  <div class="modal fade" id="myModal001">
-    <div class="modal-dialog">
-    <div class="modal-content">   
-    <!-- Modal Header -->
-    <div class="modal-header">
-    <h1 class="modal-title">Nuestra Web</h1>
-    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-    </div> 
-  <!-- Modal body -->
-  <div class="modal-body "> 
-  <div class="embed-responsive embed-responsive-16by9" >
-    <a class="btn btn-lg btn-primary" href="https://www.youtube.com/@grupo_atecMotoBen" type="html" role="button">Canal MotoBen &raquo;</a>
-  </div> 
-    <!-- Modal footer -->
- <div class="modal-footer">
-  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-  </div>
-  </div>
-  </div>
-  </div> 
-  </div> 
-
-
 </main>
 <script src="/static/js/min.js"></script>
 

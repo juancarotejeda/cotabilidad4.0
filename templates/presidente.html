@@ -143,17 +143,13 @@
     </ul>
     </div>   
 <main>
-    <div class="container">
-      <div class="row mb-3 text-center">  
-        <img class="mb-4" src="/static/imagenes/indotel.gif" alt="" width="300" height="150">
-      </div>  
       <div class="row mb-3 text-center"> 
         <p class="lead">Saludos señor(a) Presidente(a).Con el apollo de la <code> SUBDIRECCION DEL INTRAN</code><br>
-         y <code>GRUPO ACTEC</code> les recordamos que de usted depende el exito finaciero de esta parada</p>
+         y <code>GRUPO ACTEC</code> </p>
          <h1>Gracias por aceptar esta aplicacion!!</h1>
       </div>   
-    <article class="my-3" id="modal">
-      <div class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+    <article class="container" id="modal">
+      <div class="bd-heading sticky-xl-top ps-3   mb-2 mt-xl-0 mb-xl-2">
       <h3>Seleccinar</h3>   
       <div class="bd-example-snippet bd-code-snippet">
       <div class="bd-example m-0 border-0">    
@@ -188,7 +184,10 @@
     </div>    
     </div>
     </div> 
-    </div>  
+    </div> 
+    <div class="container mb-3 ">  
+      <img class="mb-0" src="/static/imagenes/indotel.gif" alt="" width=100% height="150">
+    </div> 
     </article>
 
     <!-- The Modal -->
@@ -236,11 +235,11 @@
     </label>
     </li>
     </ol>  
-    <table >
+    <table class="text-center" >
     <thead>
     <tr>
       <th>ITEM</th>
-      <th> ASOCIADOS</th>
+      <th> ASOCIADOS</th >
       <th>CEDULA</th>
       <th>PAGO</th>            
     </tr>
@@ -257,13 +256,13 @@
       <td>
       <input type="hidden" value="{{ user[2]}}" name="cedula">{{ user[2]}}
       </td>
-      <td>  
-      <select name="select" required> 
-      <option value="">Cuotas</option>
-      <option value="no-pago" >cuota no pagada</option>
-      <option value="pago">cuota pagada</option>
-    </select>         
-    </td>
+      <td>
+        <select name="select" required>
+          <option value="">Cuotas</option > 
+          <option value="no-pago" >no pagada</option>
+          <option value="pago">pagada</option>
+    </select>
+      </td>
     </tr>
     {%endfor%} 
     </tbody>
@@ -311,18 +310,19 @@
     <input type="text" name="time" value="{{fecha}}" id="fecha">
     </label> 
     </li>
-    <li>              
-    <label for="descripcion">DESCRIPCION:</label>
-    <select name="descripcion_g" id="descripcion" required>
-      <option value=""> </option>
-      <option value="Pago a la Administradora">Pago a la Administradora</option>
-      <option value="Ayuda para la Federacion">Ayuda para la Federacion</option>
-      <option value="Compra de casco protector">Compra de casco protector</option>
-      <option value="Ayuada a Miembro">Ayuada a Miembro</option>
-      <option value="Compra de respuesto">Compra de respuestos</option>
-      <option value="Gastos segun Factura anexa">Gastos segun Factura anexa</option>
-    </select>
-    </li>
+    <li>    
+      
+      
+      <label for="browser" class="form-label">Opciones:</label>
+      <select name="browsers" id="browsers" required>
+          <option value="" >Elegir
+          <option value="Pago a la Administradora">Pago a la Administradora
+          <option value="Ayuda para la Federacion">Ayuda para la Federacion
+          <option value="Compra de casco protector">Compra de casco protector
+          <option value="Ayuada a Miembro">Ayuada a Miembro
+          <option value="Compra de respuestos">Compra de respuestos
+          <option value="Gastos segun Facturas anexas">Gastos segun Facturas anexas  
+      </select>          
     <li>  
     <label for="monto" >
     <em>MONTO:</em>  
@@ -331,9 +331,9 @@
     </li>    
     </ol>           
     <div class="d-flex gap-2 justify-content-center py-5">
-    <button class="btn btn-primary rounded-pill px-3" type="reset">Borrar</button>
-    <button class="btn btn-secondary rounded-pill px-3" type="submit">Enviar</button>
-    </div>
+    <button class="btn btn-primary" type="reset">Borrar</button>
+    <button type="submit" class="btn btn-primary">Procesar</button>
+    </div> 
     </form>
     <!-- Modal footer -->
     <div class="modal-footer">
@@ -767,45 +767,43 @@
       <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div> 
       <div class="modal-body list_pago">
-
-        <div class="col-lg-4 themed-grid-col list_pago">   
-          <h1>INFORMACION FINANCIERA</h1>
-          <table>
-          <tr>
-            <th>Item</th>
-            <th>Informacion financiera</th>
-            <th>Total al momento</th>
-          
-          </tr>
-          <tr>
-          <tD>1</tD>
-          <td>aporta de los asociados :</td>
-          <td>{{diario[2]}}RD$</td>
+      <div class="col-lg-4 themed-grid-col list_pago">   
+        <h1>INFORMACION FINANCIERA</h1>
+        <table>
+        <tr>
+        <th>Item</th>
+        <th>Informacion financiera</th>
+        <th>Total al momento</th>
         </tr>
         <tr>
-          <tD>2</tD>
-          <td>ingresos por otras actividades :</td>
-          <td> {{diario[4]}}RD$</td>
+        <tD>1</tD>
+        <td>aporta de los asociados :</td>
+        <td>{{diario[2]}}RD$</td>
+        </tr>
+        <tr>
+        <tD>2</tD>
+        <td>ingresos por otras actividades :</td>
+        <td> {{diario[4]}}RD$</td>
         </tr>
         <tr>
         <tD>3</tD>
         <td>Prestamos a los asociados :</td>
         <td>{{diario[1]}}RD$</td>
-      </tr>
-        <tr>
-          <tD>4</tD>
-          <td> abonos a prestamos :</td>
-          <td>{{diario[6]}}RD$</td>
         </tr>
         <tr>
-          <tD>5</tD>
-          <td>cuotas no pagadas :</td>
-          <td>{{diario[5]}}RD$</td>
+        <tD>4</tD>
+        <td> abonos a prestamos :</td>
+        <td>{{diario[6]}}RD$</td>
         </tr>
         <tr>
-          <tD>6</tD>
-          <td> gastos incurridos de parada :</td>
-          <td>{{diario[3]}}RD$</td>
+        <tD>5</tD>
+        <td>cuotas no pagadas :</td>
+        <td>{{diario[5]}}RD$</td>
+        </tr>
+        <tr>
+        <tD>6</tD>
+        <td> gastos incurridos de parada :</td>
+        <td>{{diario[3]}}RD$</td>
         </tr>
         <tr>
         <tD>7</tD>
@@ -814,11 +812,11 @@
         </tr>
         <tr>
         <tD>8</tD>
-          <td>balance bancario :</td>
+        <td>balance bancario :</td>
         <td>{{diario[7]}}RD$</td>
         </tr>
-          </table>
-  </div>
+        </table>
+    </div>
 
     <!-- Modal footer -->
     <div class="modal-footer">
@@ -836,8 +834,8 @@
       <div class="modal-header">
       <h1 class="modal-title">ESTADO DE PAGOS</h1>
       <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div> 
-      <div class="modal-body list_pago">
+    </div> 
+    <div class="modal-body list_pago">
 
         <div class="col-lg-4 themed-grid-col list_pago">   
           <h1>Historial de Aportes y Pendientes</h1>

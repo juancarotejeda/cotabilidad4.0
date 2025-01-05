@@ -307,7 +307,6 @@ def report_abono(cur,parada,fecha,abono_a,cantidad_a):
 def imprimir(cur,parada,fecha,descripcion,cantidad,titulo,president,miembros,item):
     infor=info_parada(cur,parada)
     for datos in infor:
-        pdf = FPDF()
         pdf = FPDF(orientation='P',unit='mm',format='Letter')
         pdf.alias_nb_pages()
         pdf.add_page()
@@ -316,7 +315,7 @@ def imprimir(cur,parada,fecha,descripcion,cantidad,titulo,president,miembros,ite
         pdf.cell(ln=0, h=22.0, align='C', w=75.0, txt=f'{titulo}', border=0)
         pdf.set_line_width(0.0)
         pdf.rect(15.0, 15.0, 170.0, 100.0)
-        pdf.image('C:/Users/juanc/Desktop/proyecto motoben-actec/actec-bootrap/static/imagenes/logo-motoben.jpg', 20.0, 17.0, link='', type='', w=30.0, h=30.0)
+        pdf.image('./static/imagenes/logo-motoben.jpg', 20.0, 17.0, link='', type='', w=30.0, h=30.0)
         pdf.set_font('arial', '', 8.0)
         pdf.set_xy(50.0, 21.0)
         pdf.cell(ln=0, h=4.0, align='C', w=75.0, txt='Original', border=0)
@@ -327,7 +326,7 @@ def imprimir(cur,parada,fecha,descripcion,cantidad,titulo,president,miembros,ite
         pdf.cell(ln=0, h=7.0, align='L', w=40.0, txt=f'{fecha}', border=0)
         pdf.set_font('arial', 'B', 14.0)
         pdf.set_xy(115.0, 31.0)
-        pdf.cell(ln=0, h=5.5, align='L', w=10.0, txt='N\xba: ', border=0)
+        pdf.cell(ln=0, h=5.5, align='L', w=10.0, txt='Codigo: ', border=0)
         pdf.set_xy(135.0, 31.0)
         pdf.cell(ln=0, h=9.5, align='L', w=60.0, txt='00000001', border=0)
         pdf.set_font('arial', 'B', 12.0)
@@ -371,7 +370,7 @@ def imprimir(cur,parada,fecha,descripcion,cantidad,titulo,president,miembros,ite
         pdf.set_xy(65.0, 90.0)
         pdf.cell(ln=0, h=5.0, align='L', w=20.0, txt=f'{miembros}', border=0)
         pdf.set_xy(92.0, 90.0)
-        pdf.cell(ln=0, h=5.0, align='L', w=43.0, txt='Per\xedodo Facturado', border=0)
+        pdf.cell(ln=0, h=5.0, align='L', w=43.0, txt='Facturado', border=0)
         pdf.set_xy(125.0, 90.0)
         pdf.cell(ln=0, h=5.0, align='L', w=20.0, txt=f'{fecha}', border=0)
         pdf.set_xy(150.0, 90.0)
@@ -388,16 +387,14 @@ def imprimir(cur,parada,fecha,descripcion,cantidad,titulo,president,miembros,ite
         pdf.cell(w=120.0, h=10.0,txt=f'{descripcion}',border=0,ln=0,align='L',fill=0)
         pdf.multi_cell(w=30.0, h=10.0,txt=f'{cantidad}',border=0,align='C',fill=0)            
         pdf.ln(5) 
-       
-        pdf.output(f"C:/Users/juanc/Desktop/proyecto motoben-actec/actec-bootrap/static/pdf/factura_{parada}{titulo}{fecha}.pdf", 'F')    
-        return  str(f"/static/pdf/factura_{parada}{titulo}{fecha}.pdf")
+        pdf.output('I','UTF-8')   
+        return 
     
 
 
 def imprimir_lista(cur,parada,fecha,string,valor_cuota,titulo,president,cant,cuotas):
     infor=info_parada(cur,parada)
     for datos in infor:
-        pdf = FPDF()
         pdf = FPDF(orientation='P',unit='mm',format='Letter')
         pdf.alias_nb_pages()
         pdf.add_page()
@@ -461,7 +458,7 @@ def imprimir_lista(cur,parada,fecha,string,valor_cuota,titulo,president,cant,cuo
         pdf.set_xy(65.0, 90.0)
         pdf.cell(ln=0, h=5.0, align='L', w=20.0, txt=f'{cant}', border=0)
         pdf.set_xy(92.0, 90.0)
-        pdf.cell(ln=0, h=5.0, align='L', w=43.0, txt='Per\xedodo Facturado', border=0)
+        pdf.cell(ln=0, h=5.0, align='L', w=43.0, txt='Facturado', border=0)
         pdf.set_xy(125.0, 90.0)
         pdf.cell(ln=0, h=5.0, align='L', w=20.0, txt=f'{fecha}', border=0)
         pdf.set_xy(150.0, 90.0)
@@ -486,9 +483,8 @@ def imprimir_lista(cur,parada,fecha,string,valor_cuota,titulo,president,cant,cuo
         pdf.cell(w=0.0, h=10.0,txt=f'TOTAL APORTADO {cuotas[0]}RD$  ',border=0,ln=1,align='L',fill=0)
         pdf.set_x(120)       
         pdf.cell(w=0.0, h=10.0,txt=f'TOTAL PENDIENTES {cuotas[1]}RD$ ',border=0,ln=1,align='L',fill=0) 
-
-        pdf.output(f"C:/Users/juanc/Desktop/proyecto motoben-actec/actec-bootrap/static/pdf/factura_{parada}{titulo}{fecha}.pdf", 'F')    
-        return  str(f"/static/pdf/factura_{parada}{titulo}{fecha}.pdf") 
+        pdf.output(dest='I', encoding='UTF-8')   
+        return 
     
 def info_cuotas(string,cuota): 
      estados=[] 
