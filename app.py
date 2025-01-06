@@ -2,7 +2,7 @@ import funciones,os,mysql.connector
 from flask import Flask, render_template,flash, request,  redirect, url_for,make_response
 from datetime import datetime
 from dotenv import load_dotenv
-
+import icecream as ic
 load_dotenv()
 
 app = Flask(__name__)
@@ -29,13 +29,13 @@ def login():
 @app.route("/verificador", methods=["GUET","POST"])
 def verificador(): 
    msg = ''   
-   if request.method == 'POST': 
-    global parada ,cedula          
+   if request.method == 'POST':  
+    global fecha  
+    fecha = datetime.strftime(datetime.now(),"%Y %m %d - %H")        
     cedula = request.form['cedula']  
     cur =connection.cursor()
     parada=funciones.vef_cedula(cur,cedula)   
-    if parada!= []:                                                                             
-            fecha = datetime.strftime(datetime.now(),"%Y %m %d - %H")            
+    if parada!= []:                                                                                                     
             informacion = funciones.info_parada(cur,parada) 
             cabecera = funciones.info_cabecera(cur,parada) 
             prestamos=funciones.lista_prestamos(cur,parada)
@@ -76,9 +76,10 @@ def cuotas():
                     request.form.getlist('cedula')[i])      
         string=funciones.dividir_lista(my_list,4)
         cur =connection.cursor()     
-        funciones.crear_pago(cur,parada,string,valor_cuota,fecha) 
-        cur.close() 
-        return render_template("presidente.html") 
+        agregados=funciones.crear_pago(cur,parada,string,valor_cuota,fecha) 
+        cur.close()
+        alerta=f"Se agrego el pago de cuotas por: {agregados[0]} RD$  y un pendiente de:{agregados[1]} RD$ correpondiente al dia {fecha}" 
+        return render_template('alert.html',alerta=alerta)   
 
 @app.route("/data_gastos",methods=["GET","POST"])
 def data_gastos():
@@ -93,8 +94,9 @@ def data_gastos():
        cantidad = request.form['cantidad_g']      
        cur = connection.cursor()    
        funciones.report_gastos(cur,parada,fecha,descripcion,cantidad)  
-       cur.close() 
-       return redirect(url_for('enviar'))  
+       cur.close()
+       alerta=f"Se produjo un consumo por: {descripcion} por valor de {cantidad} RD$ hoy dia {fecha}"  
+       return render_template('alert.html',alerta=alerta)  
         
 @app.route("/data_ingresos",methods=["GET","POST"])
 def data_ingresos(): 
@@ -110,7 +112,8 @@ def data_ingresos():
        cur = connection.cursor() 
        funciones.report_ingresos(cur,parada,fecha,descripcion,cantidad)          
        cur.close()
-       return redirect(url_for('enviar'))        
+       alerta=f"Se produjo un por: {descripcion} por valor de {cantidad} RD$ hoy dia {fecha}"
+       return render_template('alert.html',alerta=alerta)        
    
          
 @app.route("/data_prestamos",methods=["GET","POST"])
@@ -127,7 +130,8 @@ def data_prestamos():
        cur = connection.cursor() 
        funciones.report_prestamo(cur,parada,fecha,prestamo,monto)        
        cur.close()
-       return redirect(url_for('enviar'))  
+       alerta=f"Se genero un prestamo a: {prestamo} por valor de {monto} RD$  este dia {fecha}"
+       return render_template('alert.html',alerta=alerta)    
 
 @app.route("/data_abonos",methods=["GET","POST"])
 def data_abonos(): 
@@ -143,7 +147,8 @@ def data_abonos():
        cur = connection.cursor() 
        funciones.report_abono(cur,parada,fecha,abono_a,cantidad_a)          
        cur.close()
-       return redirect(url_for('enviar'))  
+       alerta=f"Se genero un ingreso como abono aal prestamo de: {abono_a} por valor de {cantidad_a} RD$ hoy dia {fecha}"
+       return render_template('alert.html',alerta=alerta)    
   
    
 @app.route("/data_bancos",methods=["GET","POST"])
@@ -156,35 +161,17 @@ def data_bancos():
        miembros=request.form['miembros'] 
        banco = request.form['banco'] 
        cuenta = request.form['cuenta'] 
-       movimiento = request.form['operacion']
+       operacion = request.form['operacion']
        item = request.form['item'] 
        monto = request.form['monto']
        balance = request.form['balance']
-       operacion= f"operacion de {movimiento} en la cuenta # {cuenta} de el {banco}"
        cur = connection.cursor() 
        funciones.estado_bancario(cur,parada,fecha,banco,cuenta,operacion,monto,balance)        
        cur.close() 
-       return redirect(url_for('enviar'))   
+       alerta=f"Se hizo un reporte bancario hoy: {fecha}  de una transacion de  {operacion} por un monto de {monto} RD$ lo que actualiza el balance a: {balance} RD$" 
+       return render_template('alert.html',alerta=alerta)     
 
-    
-@app.route("/enviar",methods=["GET","POST"])   
-def enviar():
-            cur = connection.cursor() 
-            fecha = datetime.strftime(datetime.now(),"%Y %m %d - %H")            
-            informacion = funciones.info_parada(cur,parada) 
-            cabecera = funciones.info_cabecera(cur,parada) 
-            prestamos=funciones.lista_prestamos(cur,parada)
-            miembros = funciones.lista_miembros(cur,parada)                
-            diario = funciones.diario_general(cur,parada) 
-            cuotas_hist = funciones.pendiente_aport(cur,parada)
-            datos=funciones.aportacion(cur,parada) 
-            nombre =  funciones.info_personal(cur,parada,cedula)
-            prestamo = funciones.verificar_prestamo(cur,parada,cedula)
-            pagos = funciones.hist_pago(cur,parada,nombre)        
-            cur.close()           
-            return render_template("presidente.html",informacion=informacion,miembros=miembros,datos=datos,cabecera=cabecera,fecha=fecha,diario=diario,prestamos=prestamos,parada=parada,pagos=pagos,cuotas_hist=cuotas_hist)    
        
-
 @app.route("/canal")
 def canal():
     return render_template('canal_motoben.html')

@@ -1,3 +1,5 @@
+import icecream as ic
+
 
 def check_parada(cur,parada):
     cur.execute(f"SELECT autorizar FROM tabla_index WHERE nombre = '{parada}' ")
@@ -236,9 +238,10 @@ def crear_pago(cur,parada,string,valor_cuota,hoy):
        n_aporte=int(suma_si) * float(valor_cuota)
        n_pendiente=int(suma_no) * float(valor_cuota)
        cur.execute(f"UPDATE tabla_index SET aporte={n_aporte}, pendiente={n_pendiente} WHERE nombre='{parada}'")
-       return
+       return n_aporte,n_pendiente
 
 def estado_bancario(cur,parada,fecha,banco,cuenta,operacion,monto,balance) : 
+    print(parada,fecha,banco,cuenta,operacion,monto,balance)
     cur.execute(f"CREATE TABLE IF NOT EXISTS {parada}_banco( id int NOT NULL AUTO_INCREMENT ,fecha VARCHAR(50)  NULL, banco VARCHAR(50) NULL, operacion VARCHAR(50) NULL,  numero_cuenta VARCHAR(50) NULL, monto DECIMAl(10,2) unsigned DEFAULT 0, balance DECIMAl(10,2) unsigned DEFAULT 0,PRIMARY KEY(id))")                                                                                                                                
     cur.execute(f"INSERT INTO {parada}_banco(fecha, banco, numero_cuenta, operacion, monto, balance) VALUES('{fecha}', '{banco}', '{cuenta}', '{operacion}',{monto},{balance})")
     return  
@@ -277,29 +280,9 @@ def report_prestamo(cur,parada,fecha,prestamo,monto):
        return     
        
 def report_abono(cur,parada,fecha,abono_a,cantidad_a):
-    balance_prestamos=[]
-    n_abonos=[]
-    prestamo=[] 
-    abono_persona=[]
     cur.execute(f"CREATE TABLE IF NOT EXISTS {parada}_abonos( id int NOT NULL AUTO_INCREMENT ,fecha VARCHAR(50)  NULL,  abono_a VARCHAR(50)  NULL, monto_abono DECIMAl(10,2) unsigned DEFAULT 0, balance_prestamo DECIMAl(10,2) unsigned DEFAULT 0 , PRIMARY KEY(id))" )                                                                                                                            
     cur.execute(f"INSERT INTO {parada}_abonos(fecha, abono_a, monto_abono) VALUES('{fecha}', '{abono_a}', {cantidad_a})")         
-    cur.execute(f"SELECT SUM(monto_abono) FROM  {parada} ")
-    suma=cur.fetchone() 
-    for n_abonos in suma: 
-       n_abonos  
-    cur.execute(f"SELECT SUM(monto_abono) FROM  {parada}_abonos WHERE abono_a='{abono_a}' ")
-    suma=cur.fetchone() 
-    for abono_persona in suma: 
-        abono_persona
-    cur.execute(f"SELECT monto_prestamo FROM  {parada}_prestamos WHERE prestamo_a = '{abono_a}' ")
-    prestado=cur.fetchone()
-    for prestamo in prestado:
-        prestamo          
-    if prestamo==[] or prestamo== 0:
-      cur.execute(f"UPDATE {parada} SET balance_prestamo = 0.0 ")
-      return
-    else:       
-      return 
+    return
   
 
 def info_cuotas(string,cuota): 
