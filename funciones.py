@@ -241,7 +241,6 @@ def crear_pago(cur,parada,string,valor_cuota,hoy):
        return n_aporte,n_pendiente
 
 def estado_bancario(cur,parada,fecha,banco,cuenta,operacion,monto,balance) : 
-    print(parada,fecha,banco,cuenta,operacion,monto,balance)
     cur.execute(f"CREATE TABLE IF NOT EXISTS {parada}_banco( id int NOT NULL AUTO_INCREMENT ,fecha VARCHAR(50)  NULL, banco VARCHAR(50) NULL, operacion VARCHAR(50) NULL,  numero_cuenta VARCHAR(50) NULL, monto DECIMAl(10,2) unsigned DEFAULT 0, balance DECIMAl(10,2) unsigned DEFAULT 0,PRIMARY KEY(id))")                                                                                                                                
     cur.execute(f"INSERT INTO {parada}_banco(fecha, banco, numero_cuenta, operacion, monto, balance) VALUES('{fecha}', '{banco}', '{cuenta}', '{operacion}',{monto},{balance})")
     return  
